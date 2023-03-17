@@ -1,0 +1,40 @@
+.search-bar {
+  display: flex;
+  align-items: center;
+  width: 270px;
+  min-width: 270px;
+  border: 2px solid #222;
+  gap: 5px;
+  padding: 0 10px 0 20px;
+}
+.search-bar__input {
+  line-height: 20px;
+  font-size: 13px;
+  color: #222;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 0;
+  height: 40px;
+  outline: 0;
+  width: 100%;
+}
+.search-bar__magnifying-glass, .search-bar__cross {
+  cursor: pointer;
+}
+.search-bar__magnifying-glass:hover, .search-bar__cross:hover {
+  scale: 1.08;
+  transition: all 0.2s ease-in-out;
+}
+
+.search-bar__input:not(:placeholder-shown) ~ .search-bar__magnifying-glass,
+.search-bar__input:placeholder-shown ~ .search-bar__cross {
+  display: none;
+}
+
+.search-bar__input:placeholder-shown ~ .search-bar__magnifying-glass,
+.search-bar__input:not(:placeholder-shown) ~ .search-bar__cross {
+  display: block;
+}
+
+/*# sourceMappingURL=searchBar.css.map */
