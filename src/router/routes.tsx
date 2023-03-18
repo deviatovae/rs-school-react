@@ -3,11 +3,7 @@ import App from '../App'
 import Home from '../pages/Home'
 import AboutUs from '../pages/AboutUs'
 import ErrorPage from '../pages/ErrorPage'
-
-export enum Route {
-  HOME = '/',
-  ABOUT_US = '/about-us',
-}
+import { Route } from '../enums/route'
 
 export const routes = [
   {

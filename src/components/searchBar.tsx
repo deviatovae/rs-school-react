@@ -14,7 +14,7 @@ export default class SearchBar extends Component {
             placeholder="Search..."
           />
           <Icon
-            className="search-bar__magnifying-glass"
+            className="search-bar__search"
             icon="ph:magnifying-glass"
             color="#222"
             width="20"

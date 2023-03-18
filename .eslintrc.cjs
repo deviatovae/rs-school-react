@@ -26,6 +26,7 @@ module.exports = {
     ],
     "rules": {
         "react/prefer-stateless-function": 0,
-        "react/no-unescaped-entities": 0
-    }
+        "react/no-unescaped-entities": 0,
+        "import/prefer-default-export": "off",
+    },
 }

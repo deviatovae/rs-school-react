@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
-import { Route } from '../router/routes'
 import '../assets/ErrorPage.scss'
+import { Route } from '../enums/route'
 
 export default class ErrorPage extends Component {
   render() {

@@ -23,7 +23,7 @@
     width: 100%;
   }
 
-  &__magnifying-glass,
+  &__search,
   &__cross {
     cursor: pointer;
 
@@ -34,11 +34,11 @@
   }
 }
 
-.search-bar__input:not(:placeholder-shown) ~ .search-bar__magnifying-glass,
+.search-bar__input:not(:placeholder-shown) ~ .search-bar__search,
 .search-bar__input:placeholder-shown ~ .search-bar__cross {
   display: none;
 }
-.search-bar__input:placeholder-shown ~ .search-bar__magnifying-glass,
+.search-bar__input:placeholder-shown ~ .search-bar__search,
 .search-bar__input:not(:placeholder-shown) ~ .search-bar__cross {
   display: block;
 }

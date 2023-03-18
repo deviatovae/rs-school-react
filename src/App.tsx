@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
 import './assets/App.scss'
-import { Route } from './router/routes'
+import { Route } from './enums/route'
 
 function App() {
   const getLinkClass = (isActive: boolean) =>
