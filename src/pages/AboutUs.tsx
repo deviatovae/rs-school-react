@@ -14,11 +14,7 @@ export default class AboutUs extends Component {
         </p>
         <p className="about-us__sign">
           Thanks for stopping by!
-          <img
-            className="about-us__logo"
-            src="/src/assets/img/logo1.png"
-            alt="lavender"
-          />
+          <img className="about-us__logo" src="/img/logo1.png" alt="lavender" />
         </p>
       </div>
     )

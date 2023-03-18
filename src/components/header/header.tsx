@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
-import { Route } from '../enums/route'
+import { Route } from '../../enums/route'
 
 interface HeaderProps {
   pageTitle: string

@@ -2,7 +2,7 @@ import React, { Component, ChangeEvent } from 'react'
 import { Form } from 'react-router-dom'
 import './searchBar.scss'
 import { Icon } from '@iconify/react'
-import { Storage } from '../utils/storage'
+import { Storage } from '../../utils/storage'
 
 type SearchBarProps = Record<string, never>
 interface SearchBarState {

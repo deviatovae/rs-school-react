@@ -1,4 +1,4 @@
-@import '../assets/colors.scss';
+@import '../../assets/colors.scss';
 
 .search-bar {
   display: flex;
@@ -8,6 +8,7 @@
   border: 2px solid $mainBlack;
   gap: 5px;
   padding: 0 10px 0 20px;
+  margin-bottom: 40px;
 
   &__input {
     line-height: 20px;
