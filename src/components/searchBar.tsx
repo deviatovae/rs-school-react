@@ -4,13 +4,17 @@ import './searchBar.scss'
 import { Icon } from '@iconify/react'
 import { Storage } from '../utils/storage'
 
+type SearchBarProps = Record<string, never>
 interface SearchBarState {
   value: string
 }
 
-export default class SearchBar extends Component<void, SearchBarState> {
-  constructor() {
-    super()
+export default class SearchBar extends Component<
+  SearchBarProps,
+  SearchBarState
+> {
+  constructor(props: SearchBarProps) {
+    super(props)
     this.state = {
       value: Storage.get('search'),
     }
