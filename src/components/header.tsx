@@ -15,7 +15,7 @@ export default class Header extends Component<HeaderProps> {
     return (
       <header className="header">
         <div className="header__logo header-logo">
-          <img src="src/assets/img/logo1.png" alt="logo" />
+          <img src="/img/logo1.png" alt="logo" />
           <span className="header-logo__title">BOUGIE</span>
           <h1 className="header-logo__page">{pageTitle}</h1>
         </div>
