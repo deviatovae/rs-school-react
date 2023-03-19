@@ -12,7 +12,7 @@ describe('CardList', () => {
         name: 'candle1',
         price: 9.99,
         time: 40,
-        rating: '****',
+        rating: 5,
         image: '/src/1.jpg',
       },
       {
@@ -20,7 +20,7 @@ describe('CardList', () => {
         name: 'candle2',
         price: 9.99,
         time: 40,
-        rating: '****',
+        rating: 5,
         image: '/src/2.jpg',
       },
     ]
