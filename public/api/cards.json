@@ -4,7 +4,7 @@
     "name": "Soy Candle Oud Sahara",
     "price": 9.99,
     "time": 40,
-    "rating": "⋆⋆⋆⋆⋆",
+    "rating": 5,
     "image": "/img/cards/1.jpeg"
   },
   {
@@ -12,7 +12,7 @@
     "name": "Soy Candle Lait de Coco",
     "price": 9.99,
     "time": 40,
-    "rating": "⋆⋆⋆⋆⋆",
+    "rating": 5,
     "image": "/img/cards/2.jpeg"
   },
   {
@@ -20,7 +20,7 @@
     "name": "Soy Candle Pistachio Brulle",
     "price": 9.99,
     "time": 40,
-    "rating": "⋆⋆⋆⋆⋆",
+    "rating": 5,
     "image": "/img/cards/3.jpeg"
   },
   {
@@ -28,7 +28,7 @@
     "name": "Soy Candle Figue du Foret",
     "price": 9.99,
     "time": 40,
-    "rating": "⋆⋆⋆⋆⋆",
+    "rating": 5,
     "image": "/img/cards/4.jpeg"
   }
 ]

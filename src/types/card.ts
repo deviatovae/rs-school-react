@@ -3,6 +3,6 @@ export type Card = {
   name: string
   price: number
   time: number
-  rating: string
+  rating: number
   image: string
 }

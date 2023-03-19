@@ -28,7 +28,7 @@ export default class Card extends Component<CardProps> {
               <span className="card-middle__time-count">{time}h</span>
             </div>
           </div>
-          <span className="card__rating">{rating}</span>
+          <span className="card__rating">{'⋆'.repeat(rating)}</span>
         </div>
       </div>
     )
