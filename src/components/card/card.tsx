@@ -12,7 +12,7 @@ export default class Card extends Component<CardProps> {
     const { card } = this.props
     const { name, price, time, rating, image } = card
     return (
-      <div className="card">
+      <div className="card" data-testid="card">
         <div className="card__content">
           <img className="card__img" src={image} alt="candle" />
           <h1 className="card__name">{name}</h1>
