@@ -11,7 +11,7 @@ describe('Card', () => {
       name: 'candle1',
       price: 9.99,
       time: 40,
-      rating: '****',
+      rating: 3,
       image: '/src/1.jpg',
     }
 
@@ -33,7 +33,7 @@ describe('Card', () => {
     ).toHaveTextContent(`${card.time}h`)
 
     expect(container.querySelector('.card__rating')).toHaveTextContent(
-      card.rating
+      '⋆'.repeat(card.rating)
     )
   })
 })
