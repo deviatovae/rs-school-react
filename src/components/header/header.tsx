@@ -26,6 +26,12 @@ export default class Header extends Component<HeaderProps> {
           HOME
         </NavLink>
         <NavLink
+          to={Route.JOIN}
+          className={({ isActive }) => getLinkClass(isActive)}
+        >
+          JOIN
+        </NavLink>
+        <NavLink
           to={Route.ABOUT_US}
           className={({ isActive }) => getLinkClass(isActive)}
         >
