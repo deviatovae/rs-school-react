@@ -1,0 +1,47 @@
+@import "../../../assets/colors.scss";
+@import "../../../assets/normalize.css";
+
+.forms-country {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  min-width: 600px;
+  padding: 0 0 5px 10px;
+  border: 1.5px solid $lavenderAccent;
+  border-radius: 4px;
+  background-color: #f3eef8;
+
+  &__select {
+    display: flex;
+    padding: 10px 5px 0 0;
+    margin-top: -10px;
+
+    &::after {
+      content: "";
+      position: relative;
+      top: 2px;
+      right: 15px;
+      width: 0.8em;
+      height: 0.5em;
+      background-color: $lavenderHover;
+      clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+    }
+  }
+
+  &__text {
+    font-size: 0.8rem;
+    color: rgba($mainBlack, 0.8);
+  }
+
+  &__county-code {
+    font-weight: 600;
+    font-size: 1.1rem;
+  }
+
+  &__arrow-down {
+    font-size: 1.5rem;
+    color: $lavenderHover;
+    position: relative;
+    top: -10px;
+  }
+}
