@@ -1,0 +1,41 @@
+@import "../../../assets/colors.scss";
+@import "../../../assets/normalize.css";
+
+.forms-checkbox {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 5px;
+  position: relative;
+
+  & input:checked ~ &__tick {
+    display: block;
+  }
+
+  &__box {
+    appearance: none;
+    flex-shrink: 0;
+    width: 25px;
+    height: 25px;
+    font-size: 0.8rem;
+    background-color: #f3eef8;
+    border: 1.5px solid $lavenderAccent;
+    border-radius: 4px;
+    transition: background-color 0.2s ease-in-out;
+  }
+
+  &__tick {
+    display: none;
+    font-size: 1.1rem;
+    color: $mainBlack;
+    position: absolute;
+    left: 8px;
+  }
+
+  &__consent-label {
+    font-size: 1rem;
+    user-select: none;
+  }
+
+}
+

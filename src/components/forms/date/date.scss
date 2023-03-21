@@ -1,7 +1,7 @@
 @import "../../../assets/colors.scss";
 @import "../../../assets/normalize.css";
 
-.forms-field-name {
+.forms-date {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -16,8 +16,16 @@
     color: rgba($mainBlack, 0.8);
   }
 
-  .forms-field-name__input {
+  &__date-input {
+    padding-right: 14px;
+  }
+
+  &__birthdate {
     font-weight: 600;
     font-size: 1.1rem;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
   }
+
 }

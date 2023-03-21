@@ -364,7 +364,8 @@ select {
   outline: none;
 }
 
-input {
+input[type="text"],
+input[type="date"] {
   -webkit-appearance: none;
   -moz-appearance: none;
   background-color: transparent;
