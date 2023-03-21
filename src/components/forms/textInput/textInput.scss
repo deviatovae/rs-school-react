@@ -19,5 +19,11 @@
   .forms-field-name__input {
     font-weight: 600;
     font-size: 1.1rem;
+
+    &::placeholder {
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: rgba($mainBlack, 0.5);
+    }
   }
 }

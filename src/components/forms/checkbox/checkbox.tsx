@@ -11,6 +11,7 @@ export default class Checkbox extends Component {
           name="consent"
           value="consent"
           id="consent"
+          required
         />
         <span className="forms-checkbox__tick">✔</span>
         <label className="forms-checkbox__consent-label" htmlFor="consent">

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import './file.scss'
+import './submittedForm.scss'
 
-export default class File extends Component {
+export default class SubmittedForm extends Component {
   render() {
     return (
       <div className="forms-file">
@@ -11,7 +11,6 @@ export default class File extends Component {
           type="file"
           name="file"
           id="file-upload"
-          required
         />
       </div>
     )

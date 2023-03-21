@@ -8,7 +8,13 @@ export default class TextInput extends Component {
         <label className="forms-field-name__label" htmlFor="country">
           <span className="forms-field-name__text">Name/Surname</span>
         </label>
-        <input className="forms-field-name__input" type="text" />
+        <input
+          className="forms-field-name__input"
+          type="text"
+          placeholder="Christine Bellerose"
+          maxLength={30}
+          required
+        />
       </div>
     )
   }
