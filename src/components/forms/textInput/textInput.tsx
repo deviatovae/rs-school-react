@@ -11,6 +11,7 @@ export default class TextInput extends Component {
         <input
           className="forms-field-name__input"
           type="text"
+          name="name"
           placeholder="Christine Bellerose"
           maxLength={30}
           required

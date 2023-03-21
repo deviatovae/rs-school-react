@@ -9,7 +9,7 @@ export default class Checkbox extends Component {
           className="forms-checkbox__box"
           type="checkbox"
           name="consent"
-          value="consent"
+          value="1"
           id="consent"
           required
         />

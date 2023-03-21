@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './select.scss'
+import countries from '../../../../public/api/countries.json'
 
 export default class Select extends Component {
   render() {
@@ -11,11 +12,16 @@ export default class Select extends Component {
         <div className="forms-country__select">
           <select
             className="forms-country__county-code"
-            name="countryCode"
+            name="country"
             id="country"
             required
           >
-            <option value="france">France</option>
+            <option value="">&nbsp;</option>
+            {countries.map((option) => (
+              <option value={option} key={option}>
+                {option}
+              </option>
+            ))}
           </select>
         </div>
       </div>

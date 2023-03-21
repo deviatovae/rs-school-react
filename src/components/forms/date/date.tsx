@@ -12,7 +12,7 @@ export default class Date extends Component {
           <input
             className="forms-date__birthdate"
             type="date"
-            name="dateCode"
+            name="birthdate"
             id="date"
             maxLength={10}
             required

@@ -11,8 +11,10 @@ export default class Switcher extends Component {
         <div className="switch-button">
           <input
             className="switch-button-checkbox"
+            name="news"
             type="checkbox"
             id="switcher"
+            value="1"
           />
           <label className="switch-button__label" htmlFor="switcher">
             <span className="switch-button__label-span">Yes</span>

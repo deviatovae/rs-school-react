@@ -79,5 +79,18 @@
       letter-spacing: 1.1px;
     }
   }
+
+  &__submitted-info {
+    width: 100%;
+  }
+
+  &__submitted-info-list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 70px;
+  }
+
 }
 
