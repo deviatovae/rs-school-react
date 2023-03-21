@@ -5,6 +5,7 @@ import TextInput from '../components/forms/textInput/textInput'
 import Date from '../components/forms/date/date'
 import Checkbox from '../components/forms/checkbox/checkbox'
 import Switcher from '../components/forms/switcher/switcher'
+import File from '../components/forms/file/file'
 
 export default class Forms extends Component {
   render() {
@@ -26,6 +27,10 @@ export default class Forms extends Component {
           <Date />
           <Switcher />
           <Checkbox />
+          <File />
+          <button className="forms__submit-btn" type="submit">
+            <span>Submit</span>
+          </button>
         </div>
       </div>
     )

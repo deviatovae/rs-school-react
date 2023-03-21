@@ -1,0 +1,38 @@
+@import "../../../assets/colors.scss";
+.forms-file {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+  align-items: start;
+
+  &__title {
+    font-size: 0.8rem;
+  }
+
+  &__upload {
+    display: flex;
+    box-sizing: border-box;
+    padding: 7px 5px;
+    border: 1.5px solid $lavenderAccent;
+    border-radius: 4px;
+    background-color: #f3eef8;
+    width: 100%;
+  }
+}
+
+input::-webkit-file-upload-button {
+  padding: 5px;
+  border: 1.5px solid $lavenderAccent;
+  background-color: $lavenderHover;
+  border-radius: 4px;
+  color: $mainWhite;
+  margin-right: 3px;
+  letter-spacing: inherit;
+
+  &:hover {
+    cursor: pointer;
+    scale: 1.02;
+    transition: all .2s ease-in-out;
+  }
+}

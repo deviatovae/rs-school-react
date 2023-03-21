@@ -51,5 +51,33 @@
     width: 100%;
     margin-bottom: -15px;
   }
+
+  &__submit-btn {
+    display: flex;
+    width: 100%;
+    background-color: $mainWhite;
+    border: 1.5px solid $lavenderAccent;
+    border-radius: 4px;
+    height: 48.5px;
+    padding: 13px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    color: $mainBlack;
+
+    &:hover,
+    &:focus {
+      background-color: $lavenderHover;
+      transition: background-color ease-in-out .5ms;
+      color: $mainWhite;
+    }
+
+    &>span {
+      width: 100%;
+      text-align: center;
+      font-size: 1.3rem;
+      letter-spacing: 1.1px;
+    }
+  }
 }
 
