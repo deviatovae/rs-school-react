@@ -52,7 +52,7 @@
     opacity: 0;
     z-index: 2;
 
-    &:checked + .switch-button__label:before {
+    &:not(:checked) + .switch-button__label:before {
       transform: translateX(60px);
       transition: transform 200ms linear;
     }

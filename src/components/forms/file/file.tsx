@@ -1,8 +1,12 @@
-import React, { Component } from 'react'
+import React, { Component, Ref } from 'react'
 import './file.scss'
 
-export default class File extends Component {
+interface TextInputProps {
+  inputRef: Ref<HTMLInputElement>
+}
+export default class File extends Component<TextInputProps> {
   render() {
+    const { inputRef } = this.props
     return (
       <div className="forms-file">
         <span className="forms-file__title">Upload a profile image</span>
@@ -11,7 +15,7 @@ export default class File extends Component {
           type="file"
           name="file"
           id="file-upload"
-          required
+          ref={inputRef}
         />
       </div>
     )

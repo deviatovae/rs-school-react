@@ -1,8 +1,13 @@
-import React, { Component } from 'react'
+import React, { Component, Ref } from 'react'
 import './textInput.scss'
 
-export default class TextInput extends Component {
+interface TextInputProps {
+  inputRef: Ref<HTMLInputElement>
+}
+
+export default class TextInput extends Component<TextInputProps> {
   render() {
+    const { inputRef } = this.props
     return (
       <div className="forms-field-name">
         <label className="forms-field-name__label" htmlFor="country">
@@ -14,7 +19,7 @@ export default class TextInput extends Component {
           name="name"
           placeholder="Christine Bellerose"
           maxLength={30}
-          required
+          ref={inputRef}
         />
       </div>
     )

@@ -1,8 +1,12 @@
-import React, { Component } from 'react'
+import React, { Component, Ref } from 'react'
 import './date.scss'
 
-export default class Date extends Component {
+interface TextInputProps {
+  inputRef: Ref<HTMLInputElement>
+}
+export default class Date extends Component<TextInputProps> {
   render() {
+    const { inputRef } = this.props
     return (
       <div className="forms-date">
         <label className="forms-date__label" htmlFor="date">
@@ -15,7 +19,7 @@ export default class Date extends Component {
             name="birthdate"
             id="date"
             maxLength={10}
-            required
+            ref={inputRef}
           />
         </div>
       </div>
