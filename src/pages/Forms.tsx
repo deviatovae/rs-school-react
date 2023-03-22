@@ -43,8 +43,10 @@ export default class Forms extends Component {
               <span>Submit</span>
             </button>
             <details className="forms__submitted-info">
-              <summary>See submitted information</summary>
+              <summary>See your profile card</summary>
               <div className="forms__submitted-info-list">
+                <SubmittedForm />
+                <SubmittedForm />
                 <SubmittedForm />
                 <SubmittedForm />
               </div>

@@ -87,7 +87,9 @@
   &__submitted-info-list {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    padding-top: 10px;
+    gap: 20px 30px;
     flex-wrap: wrap;
     margin-bottom: 70px;
   }
