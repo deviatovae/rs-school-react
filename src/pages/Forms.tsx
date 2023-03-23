@@ -24,7 +24,9 @@ export default class Forms extends Component<object, FormsState> {
 
   birthdate: RefObject<HTMLInputElement> = createRef<HTMLInputElement>()
 
-  news: RefObject<HTMLInputElement> = createRef<HTMLInputElement>()
+  newsYes: RefObject<HTMLInputElement> = createRef<HTMLInputElement>()
+
+  newsNo: RefObject<HTMLInputElement> = createRef<HTMLInputElement>()
 
   consent: RefObject<HTMLInputElement> = createRef<HTMLInputElement>()
 
@@ -36,11 +38,20 @@ export default class Forms extends Component<object, FormsState> {
     const { current: country } = this.country
     const { current: name } = this.name
     const { current: birthdate } = this.birthdate
-    const { current: news } = this.news
+    const { current: newsYes } = this.newsYes
+    const { current: newsNo } = this.newsNo
     const { current: consent } = this.consent
     const { current: file } = this.file
 
-    if (!country || !name || !birthdate || !news || !consent || !file) {
+    if (
+      !country ||
+      !name ||
+      !birthdate ||
+      !newsYes ||
+      !newsNo ||
+      !consent ||
+      !file
+    ) {
       return
     }
 
@@ -58,7 +69,7 @@ export default class Forms extends Component<object, FormsState> {
             country: country.value,
             name: name.value,
             birthdate: birthdate.value,
-            news: news.checked,
+            news: newsYes.checked ? newsYes.value : newsNo.value,
             consent: consent.checked,
             file: fileList[0],
           },
@@ -68,7 +79,8 @@ export default class Forms extends Component<object, FormsState> {
         country.value = ''
         name.value = ''
         birthdate.value = ''
-        news.value = ''
+        newsYes.checked = false
+        newsNo.checked = false
         consent.value = ''
         file.value = ''
       }
@@ -94,7 +106,7 @@ export default class Forms extends Component<object, FormsState> {
             <Select inputRef={this.country} />
             <TextInput inputRef={this.name} />
             <Date inputRef={this.birthdate} />
-            <Switcher inputRef={this.news} />
+            <Switcher inputRef={this.newsYes} inputRef2={this.newsNo} />
             <File inputRef={this.file} />
             <Checkbox inputRef={this.consent} />
             <button className="forms__submit-btn" type="submit">

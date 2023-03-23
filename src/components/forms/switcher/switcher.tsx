@@ -3,27 +3,35 @@ import './switcher.scss'
 
 interface SwitcherProps {
   inputRef: Ref<HTMLInputElement>
+  inputRef2: Ref<HTMLInputElement>
 }
 export default class Switcher extends Component<SwitcherProps> {
   render() {
-    const { inputRef } = this.props
+    const { inputRef, inputRef2 } = this.props
     return (
-      <div className="switch-button__container">
+      <div className="switch-button">
         <p className="switch-button__description">
           I would like to receive news and marketing offers.
         </p>
-        <div className="switch-button">
+        <div className="switch-button__content">
           <input
-            className="switch-button-checkbox"
+            className="switch-button-radio1"
+            value="yes"
+            type="radio"
+            id="radio-one"
             name="news"
-            type="checkbox"
-            id="switcher"
-            defaultChecked
             ref={inputRef}
           />
-          <label className="switch-button__label" htmlFor="switcher">
-            <span className="switch-button__label-span">Yes</span>
-          </label>
+          <label htmlFor="radio-one">Yes</label>
+          <input
+            className="switch-button-radio2"
+            value="no"
+            type="radio"
+            id="radio-two"
+            name="news"
+            ref={inputRef2}
+          />
+          <label htmlFor="radio-two">No</label>
         </div>
       </div>
     )

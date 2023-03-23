@@ -66,4 +66,8 @@
     overflow: hidden;
     text-overflow: ellipsis;
   }
+
+  &__news, &__policy {
+    text-transform: capitalize;
+  }
 }

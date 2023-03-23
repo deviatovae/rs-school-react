@@ -3,7 +3,7 @@ export type FormFields = {
   country: string
   name: string
   birthdate: string
-  news: boolean
+  news: string
   consent: boolean
   file: File
 }

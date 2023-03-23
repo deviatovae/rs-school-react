@@ -33,10 +33,12 @@
     align-items: center;
     justify-content: center;
     max-width: 600px;
-    padding-top: 30px;
+    padding: 30px;
     gap: 20px;
     position: relative;
     z-index: 5;
+    border: 2px double $mainBlack;
+    background-color: $mainWhite;
   }
 
   &__client-details {
@@ -55,7 +57,7 @@
   &__submit-btn {
     display: flex;
     width: 100%;
-    background-color: $mainWhite;
+    background-color: #f3eef8;
     border: 1.5px solid $lavenderAccent;
     border-radius: 4px;
     height: 48.5px;
@@ -67,7 +69,7 @@
 
     &:hover,
     &:focus {
-      background-color: $lavenderHover;
+      background-color: $lavenderAccent;
       transition: background-color ease-in-out .5ms;
       color: $mainWhite;
     }
