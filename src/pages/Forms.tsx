@@ -30,56 +30,55 @@ export default class Forms extends Component<object, FormsState> {
 
   file: RefObject<HTMLInputElement> = createRef<HTMLInputElement>()
 
-  render() {
-    const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
-      e.preventDefault()
+  handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
+    e.preventDefault()
 
-      const { current: country } = this.country
-      const { current: name } = this.name
-      const { current: birthdate } = this.birthdate
-      const { current: news } = this.news
-      const { current: consent } = this.consent
-      const { current: file } = this.file
+    const { current: country } = this.country
+    const { current: name } = this.name
+    const { current: birthdate } = this.birthdate
+    const { current: news } = this.news
+    const { current: consent } = this.consent
+    const { current: file } = this.file
 
-      if (!country || !name || !birthdate || !news || !consent || !file) {
-        return
-      }
-
-      const { files: fileList } = file
-      if (!fileList) {
-        return
-      }
-
-      this.setState(
-        (prev) => ({
-          submittedCards: [
-            ...prev.submittedCards,
-            {
-              id: prev.submittedCards.length,
-              country: country.value,
-              name: name.value,
-              birthdate: birthdate.value,
-              news: news.checked,
-              consent: consent.checked,
-              file: fileList[0],
-            },
-          ],
-        }),
-        () => {
-          country.value = ''
-          name.value = ''
-          birthdate.value = ''
-          news.value = ''
-          consent.value = ''
-          file.value = ''
-        }
-      )
+    if (!country || !name || !birthdate || !news || !consent || !file) {
+      return
     }
 
-    const { submittedCards } = this.state
+    const { files: fileList } = file
+    if (!fileList) {
+      return
+    }
 
+    this.setState(
+      (prev) => ({
+        submittedCards: [
+          ...prev.submittedCards,
+          {
+            id: prev.submittedCards.length,
+            country: country.value,
+            name: name.value,
+            birthdate: birthdate.value,
+            news: news.checked,
+            consent: consent.checked,
+            file: fileList[0],
+          },
+        ],
+      }),
+      () => {
+        country.value = ''
+        name.value = ''
+        birthdate.value = ''
+        news.value = ''
+        consent.value = ''
+        file.value = ''
+      }
+    )
+  }
+
+  render() {
+    const { submittedCards } = this.state
     return (
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={this.handleSubmit}>
         <div className="forms">
           <img
             className="forms__loyalty-card"
@@ -101,14 +100,16 @@ export default class Forms extends Component<object, FormsState> {
             <button className="forms__submit-btn" type="submit">
               <span>Submit</span>
             </button>
-            <details className="forms__submitted-info">
-              <summary>See your profile card</summary>
-              <div className="forms__submitted-info-list">
-                {submittedCards.map((card) => (
-                  <SubmittedForm key={card.id} fields={card} />
-                ))}
-              </div>
-            </details>
+            {!!submittedCards.length && (
+              <details className="forms__submitted-info">
+                <summary>See your profile card</summary>
+                <div className="forms__submitted-info-list">
+                  {submittedCards.map((card) => (
+                    <SubmittedForm key={card.id} fields={card} />
+                  ))}
+                </div>
+              </details>
+            )}
           </div>
         </div>
       </form>
