@@ -25,6 +25,7 @@
     border-radius: 4px;
     -webkit-background-size: contain;
     background-size: contain;
+    pointer-events: none;
   }
 
   &__container {

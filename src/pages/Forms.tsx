@@ -8,14 +8,17 @@ import Switcher from '../components/forms/switcher/switcher'
 import File from '../components/forms/file/file'
 import SubmittedForm from '../components/forms/submittedForm/submittedForm'
 import { FormFields } from '../types/formFields'
+import Notification from '../components/forms/notification/notification'
 
 interface FormsState {
   submittedCards: FormFields[]
+  showAlert: boolean
 }
 
 export default class Forms extends Component<object, FormsState> {
   state: FormsState = {
     submittedCards: [],
+    showAlert: false,
   }
 
   country: RefObject<HTMLSelectElement> = createRef<HTMLSelectElement>()
@@ -31,6 +34,16 @@ export default class Forms extends Component<object, FormsState> {
   consent: RefObject<HTMLInputElement> = createRef<HTMLInputElement>()
 
   file: RefObject<HTMLInputElement> = createRef<HTMLInputElement>()
+
+  toggleAlert = (callback?: () => void) => {
+    this.setState(
+      (prev) => ({
+        ...prev,
+        showAlert: !prev.showAlert,
+      }),
+      callback
+    )
+  }
 
   handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault()
@@ -62,6 +75,7 @@ export default class Forms extends Component<object, FormsState> {
 
     this.setState(
       (prev) => ({
+        ...prev,
         submittedCards: [
           ...prev.submittedCards,
           {
@@ -76,6 +90,11 @@ export default class Forms extends Component<object, FormsState> {
         ],
       }),
       () => {
+        this.toggleAlert(() => {
+          setTimeout(() => {
+            this.toggleAlert()
+          }, 3000)
+        })
         country.value = ''
         name.value = ''
         birthdate.value = ''
@@ -88,9 +107,10 @@ export default class Forms extends Component<object, FormsState> {
   }
 
   render() {
-    const { submittedCards } = this.state
+    const { submittedCards, showAlert } = this.state
     return (
       <form onSubmit={this.handleSubmit}>
+        <Notification show={showAlert} />
         <div className="forms">
           <img
             className="forms__loyalty-card"
