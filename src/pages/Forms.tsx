@@ -12,13 +12,13 @@ import Notification from '../components/forms/notification/notification'
 
 interface FormsState {
   submittedCards: FormFields[]
-  showAlert: boolean
+  showAlert: boolean | null
 }
 
 export default class Forms extends Component<object, FormsState> {
   state: FormsState = {
     submittedCards: [],
-    showAlert: false,
+    showAlert: null,
   }
 
   country: RefObject<HTMLSelectElement> = createRef<HTMLSelectElement>()

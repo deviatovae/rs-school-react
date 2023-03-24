@@ -3,14 +3,22 @@ import React, { Component } from 'react'
 import { Icon } from '@iconify/react'
 
 interface NotificationProps {
-  show: boolean
+  show: boolean | null
 }
 export default class Notification extends Component<NotificationProps> {
-  render() {
+  getToastShowClass(): string {
     const { show } = this.props
-    const showAlert = show ? 'show' : 'hide'
+
+    if (show === null) {
+      return ''
+    }
+
+    return show ? 'show' : 'hide'
+  }
+
+  render() {
     return (
-      <div className={`toast ${showAlert}`}>
+      <div className={`toast ${this.getToastShowClass()}`}>
         <div className="toast__content">
           <div className="toast__message">
             <Icon
