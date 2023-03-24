@@ -16,7 +16,6 @@ export default class Switcher extends Component<SwitcherProps> {
         <div className="switch-button__content">
           <input
             className="switch-button-radio1"
-            value="yes"
             type="radio"
             id="radio-one"
             name="news"
@@ -25,7 +24,6 @@ export default class Switcher extends Component<SwitcherProps> {
           <label htmlFor="radio-one">Yes</label>
           <input
             className="switch-button-radio2"
-            value="no"
             type="radio"
             id="radio-two"
             name="news"

@@ -69,7 +69,7 @@ export default class Forms extends Component<object, FormsState> {
             country: country.value,
             name: name.value,
             birthdate: birthdate.value,
-            news: newsYes.checked ? newsYes.value : newsNo.value,
+            news: newsYes.checked,
             consent: consent.checked,
             file: fileList[0],
           },
@@ -81,7 +81,7 @@ export default class Forms extends Component<object, FormsState> {
         birthdate.value = ''
         newsYes.checked = false
         newsNo.checked = false
-        consent.value = ''
+        consent.checked = false
         file.value = ''
       }
     )

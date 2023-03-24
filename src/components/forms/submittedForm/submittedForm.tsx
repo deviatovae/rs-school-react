@@ -21,11 +21,15 @@ export default class SubmittedForm extends Component<SubmittedFormProps> {
           </div>
           <div className="form-card__info form-card-info">
             <span className="form-card-info__name">{name}</span>
-            <span className="form-card-info__birthdate">{birthdate}</span>
-            <span className="form-card-info__country">{country}</span>
-            <span className="form-card-info__news">News alert: {news}</span>
+            <span className="form-card-info__birthdate">
+              Birthdate: {birthdate}
+            </span>
+            <span className="form-card-info__country">Country: {country}</span>
+            <span className="form-card-info__news">
+              News alert: {news ? 'Yes' : 'No'}
+            </span>
             <span className="form-card-info__policy">
-              Privacy Policy: {consent}
+              Privacy Policy: {consent && 'Yes'}
             </span>
             <div className="form-card-info__image-name">Image: {file.name}</div>
           </div>
