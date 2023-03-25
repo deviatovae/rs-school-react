@@ -10,6 +10,7 @@
   border: 1.5px solid $lavenderAccent;
   border-radius: 4px;
   background-color: #f3eef8;
+  position: relative;
 
   &__select {
     display: flex;
@@ -44,4 +45,13 @@
     position: relative;
     top: -10px;
   }
+
+  &__error-message {
+    color: $error;
+    font-size: 0.9rem;
+  }
+}
+
+.error-border {
+  border: 1.5px solid $error;
 }

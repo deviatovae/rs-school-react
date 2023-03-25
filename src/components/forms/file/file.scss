@@ -19,6 +19,15 @@
     background-color: #f3eef8;
     width: 100%;
   }
+
+  &__error-message {
+    color: $error;
+    font-size: 0.9rem;
+  }
+}
+
+.error-border {
+  border: 1.5px solid $error;
 }
 
 input::-webkit-file-upload-button {

@@ -26,4 +26,12 @@
       color: rgba($mainBlack, 0.5);
     }
   }
+
+  &__error-message {
+    color: $error;
+    font-size: 0.9rem;
+  }
+}
+.error-border {
+  border: 1.5px solid $error;
 }

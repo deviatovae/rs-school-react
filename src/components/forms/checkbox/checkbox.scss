@@ -3,10 +3,15 @@
 
 .forms-checkbox {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   width: 100%;
-  gap: 5px;
-  position: relative;
+
+  &__content {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    position: relative;
+  }
 
   & input:checked ~ &__tick {
     display: block;
@@ -37,5 +42,10 @@
     user-select: none;
   }
 
+  &__error-message {
+    padding-top: 5px;
+    font-size: 0.9rem;
+    color: $error;
+  }
 }
 

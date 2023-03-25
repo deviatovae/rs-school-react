@@ -28,6 +28,7 @@ module.exports = {
         "react/prefer-stateless-function": 0,
         "react/no-unescaped-entities": 0,
         "import/prefer-default-export": "off",
+        "react/require-default-props" : "off",
         "react/state-in-constructor": [0],
         "jsx-a11y/label-has-associated-control": ["error", {
             "required": {

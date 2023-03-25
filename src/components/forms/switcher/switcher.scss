@@ -2,10 +2,23 @@
 
 .switch-button {
   display: flex;
+  flex-direction: column;
   width: 100%;
-  align-items: center;
-  justify-content: space-between;
-  user-select: none;
+  padding: 10px 0;
+
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    user-select: none;
+  }
+
+  &__error {
+    color: $error;
+    font-size: 0.9rem;
+    padding-top: 10px;
+    align-self: end;
+  }
 }
 
 .switch-button input {

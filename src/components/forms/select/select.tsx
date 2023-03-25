@@ -4,15 +4,21 @@ import countries from '../../../../public/api/countries.json'
 
 interface SelectProps {
   inputRef: Ref<HTMLSelectElement>
+  error?: string
+  onChange?: () => void
 }
 
 export default class Select extends Component<SelectProps> {
   render() {
-    const { inputRef } = this.props
+    const { inputRef, error, onChange } = this.props
+    const errorClass = error ? 'error-border' : ''
     return (
-      <div className="forms-country">
+      <div className={`forms-country ${errorClass}`}>
         <label className="forms-country__label" htmlFor="country">
-          <span className="forms-country__text">Country</span>
+          {!error && <span className="forms-country__text">Country</span>}
+          {!!error && (
+            <span className="forms-country__error-message">{error}</span>
+          )}
         </label>
         <div className="forms-country__select">
           <select
@@ -20,6 +26,7 @@ export default class Select extends Component<SelectProps> {
             name="country"
             id="country"
             ref={inputRef}
+            onChange={onChange}
           >
             <option value="">&nbsp;</option>
             {countries.map((option) => (
