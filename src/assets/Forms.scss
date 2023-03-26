@@ -4,7 +4,7 @@
 .forms {
   margin: 0 auto;
   max-width: 1200px;
-  padding: 10px;
+  padding: 20px 10px 60px;
   position: relative;
   display: flex;
   justify-content: center;
@@ -33,6 +33,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 100%;
     max-width: 600px;
     padding: 30px;
     gap: 20px;
@@ -94,7 +95,6 @@
     padding-top: 10px;
     gap: 20px 30px;
     flex-wrap: wrap;
-    margin-bottom: 70px;
   }
 
 }

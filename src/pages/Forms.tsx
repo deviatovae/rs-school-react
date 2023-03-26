@@ -103,6 +103,7 @@ export default class Forms extends Component<object, FormsState> {
       (prev) => ({
         ...prev,
         submittedCards: [...prev.submittedCards, values],
+        errors: {},
       }),
       () => {
         this.toggleAlert(() => {

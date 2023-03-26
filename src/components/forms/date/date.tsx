@@ -8,6 +8,7 @@ interface TextInputProps {
 }
 export default class Date extends Component<TextInputProps> {
   render() {
+    const today = new window.Date()
     const { inputRef, error, onChange } = this.props
     const errorClass = error ? 'error-border' : ''
     return (
@@ -25,7 +26,9 @@ export default class Date extends Component<TextInputProps> {
             type="date"
             name="birthdate"
             id="date"
-            maxLength={10}
+            max={`${today.getFullYear()}-${String(
+              today.getMonth() + 1
+            ).padStart(2, '0')}-${today.getDate()}`}
             ref={inputRef}
             onChange={onChange}
           />
