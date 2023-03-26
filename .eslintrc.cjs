@@ -39,6 +39,7 @@ module.exports = {
             "required": {
                 "some": ["nesting", "id"]
             }
-        }]
+        }],
+        "import/no-extraneous-dependencies": ["error", {"devDependencies": true}]
     },
 }
