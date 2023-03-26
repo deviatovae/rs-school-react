@@ -71,6 +71,10 @@ export default class Forms extends Component<object, FormsState> {
     }
 
     const { country, name, birthdate, newsYes, newsNo, consent, file } = fields
+    if (!file.files) {
+      return null
+    }
+
     const {
       submittedCards: { length: submittedCardsLength },
     } = this.state
@@ -83,7 +87,7 @@ export default class Forms extends Component<object, FormsState> {
       newsYes: newsYes.checked,
       newsNo: newsNo.checked,
       consent: consent.checked,
-      file: file.files ? file.files[0] : null,
+      file: file.files[0],
     }
   }
 
@@ -181,7 +185,7 @@ export default class Forms extends Component<object, FormsState> {
       errors: { country, name, birthdate, news, file, consent },
     } = this.state
     return (
-      <form onSubmit={this.handleSubmit} ref={this.form}>
+      <form onSubmit={this.handleSubmit} ref={this.form} data-testid="form">
         <Notification show={showAlert} />
         <div className="forms">
           <img
@@ -226,13 +230,20 @@ export default class Forms extends Component<object, FormsState> {
               error={consent}
               onChange={() => this.setError('consent', '')}
             />
-            <button className="forms__submit-btn" type="submit">
+            <button
+              className="forms__submit-btn"
+              type="submit"
+              data-testid="btn-submit"
+            >
               <span>Submit</span>
             </button>
             {!!submittedCards.length && (
               <details className="forms__submitted-info">
                 <summary>See your profile card</summary>
-                <div className="forms__submitted-info-list">
+                <div
+                  className="forms__submitted-info-list"
+                  data-testid="form-cards"
+                >
                   {submittedCards.map((card) => (
                     <SubmittedForm key={card.id} fields={card} />
                   ))}

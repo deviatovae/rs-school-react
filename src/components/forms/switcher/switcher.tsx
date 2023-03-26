@@ -18,6 +18,7 @@ export default class Switcher extends Component<SwitcherProps> {
           </span>
           <div>
             <input
+              data-testid="input-news"
               className="switch-button-radio1"
               type="radio"
               id="radio-one"

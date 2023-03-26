@@ -13,6 +13,7 @@ export default class Checkbox extends Component<TextInputProps> {
       <div className="forms-checkbox">
         <div className="forms-checkbox__content">
           <input
+            data-testid="input-consent"
             className="forms-checkbox__box"
             type="checkbox"
             name="consent"

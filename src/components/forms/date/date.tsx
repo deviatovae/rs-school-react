@@ -20,6 +20,7 @@ export default class Date extends Component<TextInputProps> {
         </label>
         <div className="forms-date__date-input">
           <input
+            data-testid="input-birthdate"
             className="forms-date__birthdate"
             type="date"
             name="birthdate"

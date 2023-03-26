@@ -22,6 +22,7 @@ export default class TextInput extends Component<TextInputProps> {
           )}
         </label>
         <input
+          data-testid="input-name"
           className="forms-field-name__input"
           type="text"
           id="nameField"

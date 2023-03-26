@@ -17,6 +17,7 @@ export default class File extends Component<TextInputProps> {
         )}
         {!!error && <span className="forms-file__error-message">{error}</span>}
         <input
+          data-testid="input-file"
           className={`forms-file__upload ${errorClass}`}
           type="file"
           name="file"

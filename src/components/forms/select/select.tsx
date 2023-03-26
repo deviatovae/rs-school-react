@@ -22,6 +22,7 @@ export default class Select extends Component<SelectProps> {
         </label>
         <div className="forms-country__select">
           <select
+            data-testid="input-country"
             className="forms-country__county-code"
             name="country"
             id="country"

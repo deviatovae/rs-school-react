@@ -6,7 +6,7 @@ export type FormFields = {
   newsYes: boolean
   newsNo: boolean
   consent: boolean
-  file: File | null
+  file: File
 }
 
 export type FormErrors = {
