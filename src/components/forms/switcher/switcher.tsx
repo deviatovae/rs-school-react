@@ -13,13 +13,10 @@ export default class Switcher extends Component<SwitcherProps> {
     return (
       <div className="switch-button">
         <div className="switch-button__content">
-          <span className="switch-button__description">
-            I would like to receive news and marketing offers.
-          </span>
-          <div>
+          <span>I would like to receive news and marketing offers.</span>
+          <div className="switch-button__box">
             <input
               data-testid="input-news"
-              className="switch-button-radio1"
               type="radio"
               id="radio-one"
               name="news"
@@ -28,7 +25,6 @@ export default class Switcher extends Component<SwitcherProps> {
             />
             <label htmlFor="radio-one">Yes</label>
             <input
-              className="switch-button-radio2"
               type="radio"
               id="radio-two"
               name="news"

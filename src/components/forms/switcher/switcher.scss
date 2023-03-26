@@ -13,6 +13,10 @@
     user-select: none;
   }
 
+  &__box {
+    flex-shrink: 0;
+  }
+
   &__error {
     color: $error;
     font-size: 0.9rem;
