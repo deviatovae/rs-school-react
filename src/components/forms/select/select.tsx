@@ -1,6 +1,6 @@
 import React, { Component, Ref } from 'react'
 import './select.scss'
-import countries from '../../../../public/api/countries.json'
+import countries from '../../../data/countries.json'
 
 interface SelectProps {
   inputRef: Ref<HTMLSelectElement>

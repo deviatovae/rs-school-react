@@ -24,6 +24,8 @@ export default class Forms extends Component<object, FormsState> {
     errors: {},
   }
 
+  form: RefObject<HTMLFormElement> = createRef<HTMLFormElement>()
+
   country: RefObject<HTMLSelectElement> = createRef<HTMLSelectElement>()
 
   name: RefObject<HTMLInputElement> = createRef<HTMLInputElement>()
@@ -38,9 +40,7 @@ export default class Forms extends Component<object, FormsState> {
 
   file: RefObject<HTMLInputElement> = createRef<HTMLInputElement>()
 
-  handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
-    e.preventDefault()
-
+  getFormFields = () => {
     const { current: country } = this.country
     const { current: name } = this.name
     const { current: birthdate } = this.birthdate
@@ -48,7 +48,6 @@ export default class Forms extends Component<object, FormsState> {
     const { current: newsNo } = this.newsNo
     const { current: consent } = this.consent
     const { current: file } = this.file
-    const errors: FormErrors = {}
 
     if (
       !country ||
@@ -59,60 +58,47 @@ export default class Forms extends Component<object, FormsState> {
       !consent ||
       !file
     ) {
-      return
+      return false
     }
 
-    const { files: fileList } = file
-    if (!fileList) {
-      return
+    return { country, name, birthdate, newsYes, newsNo, consent, file }
+  }
+
+  getFormValues = (): FormFields | null => {
+    const fields = this.getFormFields()
+    if (!fields) {
+      return null
     }
 
-    if (!country.value) {
-      errors.country = ErrorMsg.COUNTRY
-    }
+    const { country, name, birthdate, newsYes, newsNo, consent, file } = fields
+    const {
+      submittedCards: { length: submittedCardsLength },
+    } = this.state
 
-    if (!name.value) {
-      errors.name = ErrorMsg.NAME
+    return {
+      id: submittedCardsLength,
+      country: country.value,
+      name: name.value,
+      birthdate: birthdate.value,
+      newsYes: newsYes.checked,
+      newsNo: newsNo.checked,
+      consent: consent.checked,
+      file: file.files ? file.files[0] : null,
     }
+  }
 
-    if (!birthdate.value) {
-      errors.birthdate = ErrorMsg.BIRTHDATE
-    }
+  handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
+    e.preventDefault()
 
-    if (!newsNo.checked && !newsYes.checked) {
-      errors.news = ErrorMsg.NEWS
-    }
-
-    if (!file.value) {
-      errors.file = ErrorMsg.FILE
-    }
-
-    if (!consent.checked) {
-      errors.consent = ErrorMsg.CONSENT
-    }
-
-    if (Object.keys(errors).length) {
-      this.setState({
-        errors,
-      })
+    const values = this.getFormValues()
+    if (!values || !this.validate()) {
       return
     }
 
     this.setState(
       (prev) => ({
         ...prev,
-        submittedCards: [
-          ...prev.submittedCards,
-          {
-            id: prev.submittedCards.length,
-            country: country.value,
-            name: name.value,
-            birthdate: birthdate.value,
-            news: newsYes.checked,
-            consent: consent.checked,
-            file: fileList[0],
-          },
-        ],
+        submittedCards: [...prev.submittedCards, values],
       }),
       () => {
         this.toggleAlert(() => {
@@ -120,13 +106,10 @@ export default class Forms extends Component<object, FormsState> {
             this.toggleAlert()
           }, 3000)
         })
-        country.value = ''
-        name.value = ''
-        birthdate.value = ''
-        newsYes.checked = false
-        newsNo.checked = false
-        consent.checked = false
-        file.value = ''
+        const { current: form } = this.form
+        if (form) {
+          form.reset()
+        }
       }
     )
   }
@@ -139,6 +122,46 @@ export default class Forms extends Component<object, FormsState> {
         [field]: message,
       },
     }))
+  }
+
+  validate = (): boolean => {
+    const values = this.getFormValues()
+    if (!values) {
+      return false
+    }
+
+    const { country, name, file, consent, birthdate, newsYes, newsNo } = values
+    const errors: FormErrors = {}
+
+    if (!country) {
+      errors.country = ErrorMsg.COUNTRY
+    }
+
+    if (!name) {
+      errors.name = ErrorMsg.NAME
+    }
+
+    if (!birthdate) {
+      errors.birthdate = ErrorMsg.BIRTHDATE
+    }
+
+    if (!newsNo && !newsYes) {
+      errors.news = ErrorMsg.NEWS
+    }
+
+    if (!file) {
+      errors.file = ErrorMsg.FILE
+    }
+
+    if (!consent) {
+      errors.consent = ErrorMsg.CONSENT
+    }
+
+    if (Object.keys(errors).length) {
+      this.setState({ errors })
+      return false
+    }
+    return true
   }
 
   toggleAlert = (callback?: () => void) => {
@@ -158,12 +181,12 @@ export default class Forms extends Component<object, FormsState> {
       errors: { country, name, birthdate, news, file, consent },
     } = this.state
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit} ref={this.form}>
         <Notification show={showAlert} />
         <div className="forms">
           <img
             className="forms__loyalty-card"
-            src="../../public/img/loyalty-card.png"
+            src="/img/loyalty-card.png"
             alt="loyalty card"
           />
           <div className="forms__container">

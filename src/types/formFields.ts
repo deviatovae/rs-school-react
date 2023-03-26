@@ -3,9 +3,10 @@ export type FormFields = {
   country: string
   name: string
   birthdate: string
-  news: boolean
+  newsYes: boolean
+  newsNo: boolean
   consent: boolean
-  file: File
+  file: File | null
 }
 
 export type FormErrors = {
