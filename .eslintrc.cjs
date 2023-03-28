@@ -25,6 +25,9 @@ module.exports = {
         "prettier",
     ],
     "rules": {
-        "react/prefer-stateless-function": 0
-    }
+        "react/prefer-stateless-function": 0,
+        "react/no-unescaped-entities": 0,
+        "import/prefer-default-export": "off",
+        "react/state-in-constructor": [0],
+    },
 }
