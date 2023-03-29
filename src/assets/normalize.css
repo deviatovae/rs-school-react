@@ -348,3 +348,28 @@ template {
 [hidden] {
   display: none;
 }
+
+select {
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  padding: 0 1em 0 0;
+  margin: 0;
+  width: 100%;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: inherit;
+  line-height: inherit;
+  z-index: 1;
+  outline: none;
+}
+
+input[type="text"],
+input[type="date"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: transparent;
+  appearance: none;
+  border: 0;
+  outline: 0;
+}

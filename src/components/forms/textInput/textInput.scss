@@ -1,0 +1,37 @@
+@import "../../../assets/colors.scss";
+@import "../../../assets/normalize.css";
+
+.forms-field-name {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0 0 5px 10px;
+  border: 1.5px solid $lavenderAccent;
+  border-radius: 4px;
+  background-color: #f3eef8;
+
+  &__text {
+    font-size: 0.8rem;
+    color: rgba($mainBlack, 0.8);
+  }
+
+  .forms-field-name__input {
+    font-weight: 600;
+    font-size: 1.1rem;
+
+    &::placeholder {
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: rgba($mainBlack, 0.5);
+    }
+  }
+
+  &__error-message {
+    color: $error;
+    font-size: 0.9rem;
+  }
+}
+.error-border {
+  border: 1.5px solid $error;
+}

@@ -1,0 +1,69 @@
+@import "../../../assets/colors.scss";
+@import "../../../assets/normalize.css";
+
+.form-card {
+  box-sizing: border-box;
+  margin-top: 5px;
+  display: flex;
+  width: 250px;
+  outline: 1.5px solid $lavenderAccent;
+  border-radius: 4px;
+  background-color: white;
+  color: $mainBlack;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    user-select: none;
+  }
+
+  &__img-container {
+    display: flex;
+    width: 250px;
+    height: 70px;
+    background-color: $lavenderHover;
+    position: relative;
+  }
+
+  &__image {
+    position: absolute;
+    left: 85px;
+    top: 10px;
+    width: 80px;
+    height: 80px;
+
+    & > img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 2px solid $lavenderHover;
+    }
+  }
+
+}
+
+.form-card-info {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px 5px 10px;
+  gap: 5px;
+  font-size: 0.9rem;
+
+  &__name {
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 1.05px;
+  }
+
+  &__image-name, &__name {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

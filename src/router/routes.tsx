@@ -4,6 +4,7 @@ import AboutUs from '../pages/AboutUs'
 import { Route } from '../enums/route'
 import App from '../App'
 import ErrorPage from '../pages/ErrorPage'
+import Forms from '../pages/Forms'
 
 export const routes = [
   {
@@ -23,6 +24,16 @@ export const routes = [
       {
         path: Route.ABOUT_US,
         element: <AboutUs />,
+      },
+    ],
+  },
+  {
+    element: <App pageTitle="JOIN" />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: Route.JOIN,
+        element: <Forms />,
       },
     ],
   },

@@ -1,0 +1,76 @@
+@import "../../../assets/colors.scss";
+.toast {
+  display: flex;
+  box-sizing: border-box;
+  width: 300px;
+  height: 50px;
+  position: absolute;
+  top: 70px;
+  right: 0;
+  border: 1.5px solid $lavenderAccent;
+  background-color: $fieldBg;
+  border-radius: 4px;
+  border-left: 6px solid $lavenderAccent;
+  user-select: none;
+  z-index: 10;
+  opacity: 0;
+
+  &.show {
+    animation: show 1s ease forwards;
+    opacity: 1;
+  }
+
+  @keyframes show {
+    0% {
+      transform: translateX(100%);
+    }
+    40% {
+      transform: translateX(-10%);
+    }
+    80% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-10px);
+    }
+  }
+
+  &.hide {
+    animation: hide 1s ease forwards;
+    opacity: 1;
+  }
+
+  @keyframes hide {
+    0% {
+      transform: translateX(-10px);
+    }
+    40% {
+      transform: translateX(0%);
+    }
+    80% {
+      transform: translateX(-10%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+
+  &__content {
+    padding-left: 5px;
+  }
+
+  &__content, &__message {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__message {
+    gap: 7px;
+    color: $mainBlack;
+    font-size: 0.9rem;
+  }
+}

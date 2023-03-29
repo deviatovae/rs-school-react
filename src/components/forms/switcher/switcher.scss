@@ -1,0 +1,52 @@
+@import "../../../assets/colors.scss";
+
+.switch-button {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 10px 0;
+
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    user-select: none;
+  }
+
+  &__box {
+    flex-shrink: 0;
+  }
+
+  &__error {
+    color: $error;
+    font-size: 0.9rem;
+    padding-top: 10px;
+    align-self: end;
+  }
+}
+
+.switch-button input {
+  appearance: none;
+
+  &:checked + label {
+    background-color: $lavenderHover;
+  }
+}
+
+.switch-button label {
+  background-color: #f3eef8;
+  color: rgba(0, 0, 0, 0.6);
+  padding: 10px 16px;
+  margin-right: -1px;
+  border: 1.5px solid $lavenderHover;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+
+  &:first-of-type {
+    border-radius: 4px 0 0 4px;
+  }
+
+  &:last-of-type {
+    border-radius: 0 4px 4px 0;
+  }
+}
