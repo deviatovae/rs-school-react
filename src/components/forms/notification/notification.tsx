@@ -1,14 +1,13 @@
 import './notification.scss'
-import React, { Component } from 'react'
+import React from 'react'
 import { Icon } from '@iconify/react'
 
 interface NotificationProps {
   show: boolean | null
 }
-export default class Notification extends Component<NotificationProps> {
-  getToastShowClass(): string {
-    const { show } = this.props
 
+export function Notification({ show }: NotificationProps) {
+  const getToastShowClass = () => {
     if (show === null) {
       return ''
     }
@@ -16,21 +15,14 @@ export default class Notification extends Component<NotificationProps> {
     return show ? 'show' : 'hide'
   }
 
-  render() {
-    return (
-      <div className={`toast ${this.getToastShowClass()}`}>
-        <div className="toast__content">
-          <div className="toast__message">
-            <Icon
-              icon="octicon:info-24"
-              color="#a785b2"
-              width="24"
-              height="24"
-            />
-            <span>Your profile card has been created!</span>
-          </div>
+  return (
+    <div className={`toast ${getToastShowClass()}`}>
+      <div className="toast__content">
+        <div className="toast__message">
+          <Icon icon="octicon:info-24" color="#a785b2" width="24" height="24" />
+          <span>Your profile card has been created!</span>
         </div>
       </div>
-    )
-  }
+    </div>
+  )
 }

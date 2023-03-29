@@ -1,7 +1,7 @@
 import React from 'react'
 import { describe, it, vi } from 'vitest'
 import { fireEvent, render, screen } from '@testing-library/react'
-import Forms from './Forms'
+import { Forms } from './Forms'
 import { ErrorMsg } from '../enums/errors'
 
 describe('Forms', () => {
