@@ -6,15 +6,16 @@ import { FormFields } from '../types/formFields'
 import '../assets/FormPage.scss'
 
 export function FormPage() {
-  const [showAlert] = useState(null)
+  const [showAlert, setShowAlert] = useState(false)
   const [submittedCards, setSubmittedCards] = useState<FormFields[]>([])
   const addSubmittedCard = (card: FormFields) => {
     setSubmittedCards((prev) => [...prev, card])
+    setShowAlert(true)
   }
 
   return (
     <div className="form-page">
-      <Notification show={showAlert} />
+      {showAlert && <Notification onHide={() => setShowAlert(false)} />}
       <div className="form-page__collage form-collage">
         <div className="form-collage__left">
           <img className="l-img1" src="/img/collage/left1.jpg" alt="" />
