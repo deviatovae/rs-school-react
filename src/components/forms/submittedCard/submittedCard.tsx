@@ -1,12 +1,12 @@
 import React from 'react'
-import './submittedForm.scss'
+import './submittedCard.scss'
 import { FormFields } from '../../../types/formFields'
 
 interface SubmittedFormProps {
   fields: FormFields
 }
 
-export function SubmittedForm({
+export function SubmittedCard({
   fields: { name, country, birthdate, newsYes, file, consent },
 }: SubmittedFormProps) {
   return (

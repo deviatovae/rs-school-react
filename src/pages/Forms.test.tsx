@@ -1,12 +1,12 @@
 import React from 'react'
 import { describe, it, vi } from 'vitest'
 import { fireEvent, render, screen } from '@testing-library/react'
-import { Forms } from './Forms'
+import { FormPage } from './FormPage'
 import { ErrorMsg } from '../enums/errors'
 
 describe('Forms', () => {
   it('Should contain required inputs and their labels', () => {
-    render(<Forms />)
+    render(<FormPage />)
 
     expect(screen.getByText('Country')).toBeInTheDocument()
     expect(screen.getByTestId('input-country')).toBeInTheDocument()
@@ -23,7 +23,7 @@ describe('Forms', () => {
   })
 
   it('Should display validation error on submitting the form', () => {
-    render(<Forms />)
+    render(<FormPage />)
 
     fireEvent.click(screen.getByTestId('btn-submit'))
 
@@ -36,7 +36,7 @@ describe('Forms', () => {
   })
 
   it('Should not display cards if there are validation errors', () => {
-    render(<Forms />)
+    render(<FormPage />)
 
     fireEvent.click(screen.getByTestId('btn-submit'))
 
@@ -44,7 +44,7 @@ describe('Forms', () => {
   })
 
   it('Should render a form card after submitting a valid form', () => {
-    render(<Forms />)
+    render(<FormPage />)
 
     const imgSrc = 'image-src'
     const country = 'Canada'

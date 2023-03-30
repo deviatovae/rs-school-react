@@ -1,7 +1,7 @@
-@import "colors";
-@import "normalize.css";
+@import "../../../assets/colors";
+@import "../../../assets/normalize.css";
 
-.forms {
+.form {
   padding: 20px 10px 60px;
   display: flex;
 
@@ -14,9 +14,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    max-width: 550px;
-    padding: 30px;
     gap: 25px;
     position: relative;
     z-index: 5;
@@ -56,48 +53,11 @@
       color: $mainWhite;
     }
 
-    &>span {
+    & > span {
       width: 100%;
       text-align: center;
       font-size: 1.3rem;
       letter-spacing: 1.1px;
-    }
-  }
-
-  &__submitted-info {
-    width: 100%;
-  }
-
-  &__submitted-info-list {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-top: 10px;
-    gap: 20px 30px;
-    flex-wrap: wrap;
-  }
-
-}
-
-.form-collage {
-  padding: 2rem 5rem;
-  display: flex;
-  gap: 4px;
-  justify-content: center;
-  min-width: 30%;
-
-  &__left,
-  &__right {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 190px;
-    gap: 4px;
-
-    &>img {
-      border-radius: 4px;
-      -webkit-background-size: contain;
-      background-size: contain;
     }
   }
 }
