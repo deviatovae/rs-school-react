@@ -4,6 +4,7 @@ import { SubmittedCard } from '../components/forms/submittedCard/submittedCard'
 import { Notification } from '../components/forms/notification/notification'
 import { FormFields } from '../types/formFields'
 import '../assets/FormPage.scss'
+import { Collage } from '../components/forms/collage/collage'
 
 export function FormPage() {
   const [showAlert, setShowAlert] = useState(false)
@@ -16,20 +17,7 @@ export function FormPage() {
   return (
     <div className="form-page">
       {showAlert && <Notification onHide={() => setShowAlert(false)} />}
-      <div className="form-page__collage form-collage">
-        <div className="form-collage__left">
-          <img className="l-img1" src="/img/collage/left1.jpg" alt="" />
-          <img className="l-img2" src="/img/collage/left2.jpg" alt="" />
-          <img className="l-img3" src="/img/collage/left3.jpg" alt="" />
-          <img className="l-img4" src="/img/collage/left4.jpg" alt="" />
-        </div>
-        <div className="form-collage__right">
-          <img className="r-img1" src="/img/collage/right1.jpg" alt="" />
-          <img className="r-img2" src="/img/collage/right2.jpg" alt="" />
-          <img className="r-img3" src="/img/collage/right3.jpg" alt="" />
-          <img className="r-img4" src="/img/collage/right4.jpg" alt="" />
-        </div>
-      </div>
+      <Collage />
       <div className="form-page__form">
         <Form onSubmitted={addSubmittedCard} />
         {!!submittedCards.length && (
