@@ -1,13 +1,13 @@
 import React from 'react'
 import './submittedCard.scss'
-import { FormFields } from '../../../types/formFields'
+import { FormCard } from '../../../types/formCard'
 
 interface SubmittedFormProps {
-  fields: FormFields
+  fields: FormCard
 }
 
 export function SubmittedCard({
-  fields: { name, country, birthdate, newsYes, file, consent },
+  fields: { name, country, birthdate, news, file, consent },
 }: SubmittedFormProps) {
   return (
     <div className="form-card" data-testid="form-card">
@@ -38,13 +38,13 @@ export function SubmittedCard({
             Country: {country}
           </span>
           <span className="form-card-info__news" data-testid="form-card-news">
-            News alert: {newsYes ? 'Yes' : 'No'}
+            News alert: {news ? 'Yes' : 'No'}
           </span>
           <span
             className="form-card-info__policy"
             data-testid="form-card-consent"
           >
-            Privacy Policy: {consent && 'Yes'}
+            Privacy Policy: {consent && 'Accepted'}
           </span>
           <div
             className="form-card-info__image-name"

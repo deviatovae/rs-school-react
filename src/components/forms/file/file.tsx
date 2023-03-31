@@ -1,12 +1,14 @@
-import React, { Ref } from 'react'
+import React from 'react'
 import './file.scss'
+import { UseFormRegister } from 'react-hook-form'
+import { FormFields } from '../../../types/formFields'
 
 interface TextInputProps {
-  inputRef: Ref<HTMLInputElement>
   error?: string
+  register: ReturnType<UseFormRegister<FormFields>>
 }
 
-export function File({ inputRef, error }: TextInputProps) {
+export function File({ error, register }: TextInputProps) {
   const errorClass = error ? 'error-border' : ''
   return (
     <div className="forms-file">
@@ -15,12 +17,11 @@ export function File({ inputRef, error }: TextInputProps) {
       )}
       {!!error && <span className="forms-file__error-message">{error}</span>}
       <input
+        {...register}
         data-testid="input-file"
         className={`forms-file__upload ${errorClass}`}
         type="file"
-        name="file"
         id="file-upload"
-        ref={inputRef}
       />
     </div>
   )

@@ -1,13 +1,15 @@
-import React, { Ref } from 'react'
+import React from 'react'
 import './select.scss'
+import { UseFormRegister } from 'react-hook-form'
 import countries from '../../../data/countries.json'
+import { FormFields } from '../../../types/formFields'
 
 interface SelectProps {
-  inputRef: Ref<HTMLSelectElement>
   error?: string
+  register: ReturnType<UseFormRegister<FormFields>>
 }
 
-export function Select({ inputRef, error }: SelectProps) {
+export function Select({ error, register }: SelectProps) {
   const errorClass = error ? 'error-border' : ''
   return (
     <div className={`forms-country ${errorClass}`}>
@@ -19,11 +21,10 @@ export function Select({ inputRef, error }: SelectProps) {
       </label>
       <div className="forms-country__select">
         <select
+          {...register}
           data-testid="input-country"
           className="forms-country__county-code"
-          name="country"
           id="country"
-          ref={inputRef}
         >
           <option value="">&nbsp;</option>
           {countries.map((option) => (

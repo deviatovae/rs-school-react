@@ -1,12 +1,14 @@
-import React, { Ref } from 'react'
+import React from 'react'
 import './date.scss'
+import { UseFormRegister } from 'react-hook-form'
+import { FormFields } from '../../../types/formFields'
 
 interface TextInputProps {
-  inputRef: Ref<HTMLInputElement>
   error?: string
+  register: ReturnType<UseFormRegister<FormFields>>
 }
 
-export function Date({ inputRef, error }: TextInputProps) {
+export function Date({ error, register }: TextInputProps) {
   const today = new window.Date()
   const errorClass = error ? 'error-border' : ''
   return (
@@ -17,16 +19,15 @@ export function Date({ inputRef, error }: TextInputProps) {
       </label>
       <div className="forms-date__date-input">
         <input
+          {...register}
           data-testid="input-birthdate"
           className="forms-date__birthdate"
           type="date"
-          name="birthdate"
           id="date"
           max={`${today.getFullYear()}-${String(today.getMonth() + 1).padStart(
             2,
             '0'
           )}-${today.getDate()}`}
-          ref={inputRef}
         />
       </div>
     </div>

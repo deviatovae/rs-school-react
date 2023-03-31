@@ -1,22 +1,23 @@
-import React, { Ref } from 'react'
+import React from 'react'
 import './checkbox.scss'
+import { UseFormRegister } from 'react-hook-form'
+import { FormFields } from '../../../types/formFields'
 
 interface TextInputProps {
-  inputRef: Ref<HTMLInputElement>
   error?: string
+  register: ReturnType<UseFormRegister<FormFields>>
 }
 
-export function Checkbox({ inputRef, error }: TextInputProps) {
+export function Checkbox({ error, register }: TextInputProps) {
   return (
     <div className="forms-checkbox">
       <div className="forms-checkbox__content">
         <input
+          {...register}
           data-testid="input-consent"
           className="forms-checkbox__box"
           type="checkbox"
-          name="consent"
           id="consent"
-          ref={inputRef}
         />
         <span className="forms-checkbox__tick">✔</span>
         <label className="forms-checkbox__consent-label" htmlFor="consent">

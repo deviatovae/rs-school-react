@@ -1,12 +1,14 @@
-import React, { Ref } from 'react'
+import React from 'react'
 import './textInput.scss'
+import { UseFormRegister } from 'react-hook-form'
+import { FormFields } from '../../../types/formFields'
 
 interface TextInputProps {
-  inputRef: Ref<HTMLInputElement>
   error?: string
+  register: ReturnType<UseFormRegister<FormFields>>
 }
 
-export function TextInput({ inputRef, error }: TextInputProps) {
+export function TextInput({ error, register }: TextInputProps) {
   const errorClass = error ? 'error-border' : ''
   return (
     <div className={`forms-field-name ${errorClass}`}>
@@ -17,14 +19,13 @@ export function TextInput({ inputRef, error }: TextInputProps) {
         )}
       </label>
       <input
+        {...register}
         data-testid="input-name"
         className="forms-field-name__input"
         type="text"
         id="nameField"
-        name="name"
         placeholder="Christine Bellerose"
         maxLength={30}
-        ref={inputRef}
       />
     </div>
   )

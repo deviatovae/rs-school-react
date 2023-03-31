@@ -5,12 +5,38 @@ import { Notification } from '../components/forms/notification/notification'
 import { FormFields } from '../types/formFields'
 import '../assets/FormPage.scss'
 import { Collage } from '../components/forms/collage/collage'
+import { FormCard } from '../types/formCard'
 
 export function FormPage() {
   const [showAlert, setShowAlert] = useState(false)
-  const [submittedCards, setSubmittedCards] = useState<FormFields[]>([])
-  const addSubmittedCard = (card: FormFields) => {
-    setSubmittedCards((prev) => [...prev, card])
+  const [submittedCards, setSubmittedCards] = useState<FormCard[]>([])
+  const addSubmittedCard = ({
+    name,
+    birthdate,
+    files,
+    consent,
+    country,
+    news,
+  }: FormFields) => {
+    const file = files.item(0)
+    if (!file) {
+      return
+    }
+
+    setSubmittedCards((prev) => {
+      return [
+        ...prev,
+        {
+          id: prev.length,
+          name,
+          birthdate,
+          file,
+          consent,
+          country,
+          news,
+        },
+      ]
+    })
     setShowAlert(true)
   }
 

@@ -1,27 +1,28 @@
-import React, { Ref } from 'react'
+import React from 'react'
 import './switcher.scss'
+import { UseFormRegister } from 'react-hook-form'
+import { FormFields } from '../../../types/formFields'
 
 interface SwitcherProps {
-  inputRef: Ref<HTMLInputElement>
-  inputRef2: Ref<HTMLInputElement>
   error?: string
+  register: ReturnType<UseFormRegister<FormFields>>
 }
 
-export function Switcher({ inputRef, inputRef2, error }: SwitcherProps) {
+export function Switcher({ error, register }: SwitcherProps) {
   return (
     <div className="switch-button">
       <div className="switch-button__content">
         <span>I would like to receive news and marketing offers.</span>
         <div className="switch-button__box">
           <input
+            {...register}
             data-testid="input-news"
             type="radio"
             id="radio-one"
-            name="news"
-            ref={inputRef}
+            defaultValue="yes"
           />
           <label htmlFor="radio-one">Yes</label>
-          <input type="radio" id="radio-two" name="news" ref={inputRef2} />
+          <input {...register} id="radio-two" type="radio" defaultValue="" />
           <label htmlFor="radio-two">No</label>
         </div>
       </div>
