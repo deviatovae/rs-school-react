@@ -1,16 +1,21 @@
-import React, { ChangeEvent, useEffect, useState } from 'react'
+import React, { ChangeEvent, useEffect, useRef, useState } from 'react'
 import './searchBar.scss'
 import { Icon } from '@iconify/react'
 import { Storage } from '../../utils/storage'
 
 export function SearchBar() {
-  const [search, setSearch] = useState(Storage.get('search'))
+  const valueRef = useRef(Storage.get('search'))
+  const [search, setSearch] = useState(valueRef.current)
+
+  useEffect(() => {
+    valueRef.current = search
+  }, [search])
 
   useEffect(() => {
     return () => {
-      Storage.save('search', search)
+      Storage.save('search', valueRef.current)
     }
-  }, [search])
+  }, [])
 
   const onChange = (e: ChangeEvent<HTMLInputElement>): void => {
     setSearch(e.target.value)
