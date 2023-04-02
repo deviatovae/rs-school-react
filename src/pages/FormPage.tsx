@@ -18,6 +18,9 @@ export function FormPage() {
     country,
     news,
   }: FormFields) => {
+    if (!files) {
+      return
+    }
     const file = files.item(0)
     if (!file) {
       return

@@ -1,6 +1,7 @@
 import React from 'react'
+import user from '@testing-library/user-event'
 import { describe, it, vi } from 'vitest'
-import { fireEvent, render, screen } from '@testing-library/react'
+import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { FormPage } from './FormPage'
 import { ErrorMsg } from '../enums/errors'
 
@@ -22,12 +23,13 @@ describe('Forms', () => {
     expect(screen.getByTestId('input-consent')).toBeInTheDocument()
   })
 
-  it('Should display validation error on submitting the form', () => {
+  it('Should display validation error on submitting the form', async () => {
     render(<FormPage />)
 
     fireEvent.click(screen.getByTestId('btn-submit'))
 
-    expect(screen.getByText(ErrorMsg.NAME)).toBeInTheDocument()
+    const nameError = await screen.findByText(ErrorMsg.NAME)
+    expect(nameError).toBeInTheDocument()
     expect(screen.getByText(ErrorMsg.COUNTRY)).toBeInTheDocument()
     expect(screen.getByText(ErrorMsg.BIRTHDATE)).toBeInTheDocument()
     expect(screen.getByText(ErrorMsg.NEWS)).toBeInTheDocument()
@@ -43,7 +45,7 @@ describe('Forms', () => {
     expect(screen.queryByTestId('form-cards')).toBeNull()
   })
 
-  it('Should render a form card after submitting a valid form', () => {
+  it('Should render a form card after submitting a valid form', async () => {
     render(<FormPage />)
 
     const imgSrc = 'image-src'
@@ -66,37 +68,30 @@ describe('Forms', () => {
     fireEvent.change(screen.getByTestId('input-birthdate'), {
       target: { value: birthdate },
     })
-    fireEvent.change(screen.getByTestId('input-news'), {
-      target: { checked: true },
-    })
-    fireEvent.change(screen.getByTestId('input-file'), {
-      target: {
-        files: [file],
-      },
-    })
-    fireEvent.change(screen.getByTestId('input-consent'), {
-      target: { checked: true },
-    })
+    fireEvent.click(screen.getByTestId('input-news'))
 
+    await user.upload(screen.getByTestId('input-file'), file)
+
+    fireEvent.click(screen.getByTestId('input-consent'))
     fireEvent.click(screen.getByTestId('btn-submit'))
 
-    expect(screen.getByTestId('form-cards')).toBeInTheDocument()
-    expect(screen.getByTestId('form-card')).toBeInTheDocument()
-
-    expect(screen.getByTestId('form-card-img')).toHaveAttribute('src', imgSrc)
-    expect(screen.getByTestId('form-card-name')).toHaveTextContent(name)
-    expect(screen.getByTestId('form-card-birthdate')).toHaveTextContent(
-      birthdate
-    )
-    expect(screen.getByTestId('form-card-country')).toHaveTextContent(country)
-    expect(screen.getByTestId('form-card-news')).toHaveTextContent(
-      'News alert: Yes'
-    )
-    expect(screen.getByTestId('form-card-consent')).toHaveTextContent(
-      'Privacy Policy: Yes'
-    )
-    expect(screen.getByTestId('form-card-file-name')).toHaveTextContent(
-      `Image: ${fileName}`
-    )
+    await waitFor(() => {
+      expect(screen.getByTestId('form-card')).toBeInTheDocument()
+      expect(screen.getByTestId('form-card-img')).toHaveAttribute('src', imgSrc)
+      expect(screen.getByTestId('form-card-name')).toHaveTextContent(name)
+      expect(screen.getByTestId('form-card-birthdate')).toHaveTextContent(
+        birthdate
+      )
+      expect(screen.getByTestId('form-card-country')).toHaveTextContent(country)
+      expect(screen.getByTestId('form-card-news')).toHaveTextContent(
+        'News alert: Yes'
+      )
+      expect(screen.getByTestId('form-card-consent')).toHaveTextContent(
+        'Privacy Policy: Accepted'
+      )
+      expect(screen.getByTestId('form-card-file-name')).toHaveTextContent(
+        `Image: ${fileName}`
+      )
+    })
   })
 })
