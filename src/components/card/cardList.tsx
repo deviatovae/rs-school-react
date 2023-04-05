@@ -4,7 +4,11 @@ import type { Card as CardType } from '../../types/card'
 import { Card } from './card'
 import './cardList.scss'
 
-export function CardList() {
+interface CardListProps {
+  selectCard: (card: CardType) => void
+}
+
+export function CardList({ selectCard }: CardListProps) {
   const [cards, setCards] = useState<CardType[]>([])
 
   useEffect(() => {
@@ -18,7 +22,7 @@ export function CardList() {
   return (
     <div className="card-list">
       {cards.map((card) => (
-        <Card key={card.id} card={card} />
+        <Card key={card.id} card={card} onClick={() => selectCard(card)} />
       ))}
     </div>
   )

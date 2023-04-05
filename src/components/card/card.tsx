@@ -1,17 +1,24 @@
-import React from 'react'
+import React, { MouseEventHandler } from 'react'
 import { Icon } from '@iconify/react'
 import './card.scss'
 import type { Card as CardType } from '../../types/card'
 
 interface CardProps {
   card: CardType
+  onClick?: MouseEventHandler
 }
 
 export function Card({
   card: { name, price, time, rating, image },
+  onClick,
 }: CardProps) {
   return (
-    <div className="card" data-testid="card">
+    <div
+      className="card"
+      data-testid="card"
+      onClick={onClick}
+      aria-hidden="true"
+    >
       <div className="card__content">
         <img className="card__img" src={image} alt="candle" />
         <h1 className="card__name">{name}</h1>

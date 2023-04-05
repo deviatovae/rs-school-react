@@ -5,7 +5,8 @@
     "price": 9.99,
     "time": 40,
     "rating": 5,
-    "image": "/img/cards/1.jpeg"
+    "image": "/img/cards/1.jpeg",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. cupiditate. cupiditate. cupiditate. cupiditate. cupiditate. Voluptuary ducimus Voluptuary ducimus Voluptatum ducimus voluptas?"
   },
   {
     "id": 2,
@@ -13,7 +14,8 @@
     "price": 9.99,
     "time": 40,
     "rating": 5,
-    "image": "/img/cards/2.jpeg"
+    "image": "/img/cards/2.jpeg",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. cupiditate. cupiditate. cupiditate. cupiditate. cupiditate. Voluptuary ducimus Voluptuary ducimus Voluptatum ducimus voluptas?"
   },
   {
     "id": 3,
@@ -21,7 +23,8 @@
     "price": 9.99,
     "time": 40,
     "rating": 5,
-    "image": "/img/cards/3.jpeg"
+    "image": "/img/cards/3.jpeg",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. cupiditate. cupiditate. cupiditate. cupiditate. cupiditate. Voluptuary ducimus Voluptuary ducimus Voluptatum ducimus voluptas?"
   },
   {
     "id": 4,
@@ -29,6 +32,7 @@
     "price": 9.99,
     "time": 40,
     "rating": 5,
-    "image": "/img/cards/4.jpeg"
+    "image": "/img/cards/4.jpeg",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. cupiditate. cupiditate. cupiditate. cupiditate. cupiditate. Voluptuary ducimus Voluptuary ducimus Voluptatum ducimus voluptas?"
   }
 ]

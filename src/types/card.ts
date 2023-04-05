@@ -5,4 +5,5 @@ export type Card = {
   time: number
   rating: number
   image: string
+  description?: string
 }
