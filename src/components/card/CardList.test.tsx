@@ -31,7 +31,7 @@ describe('CardList', () => {
       })
     ) as Mock
 
-    render(<CardList />)
+    render(<CardList selectCard={() => null} />)
 
     await waitFor(() => screen.getAllByTestId('card'))
 
