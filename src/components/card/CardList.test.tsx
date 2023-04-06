@@ -1,7 +1,7 @@
 import React from 'react'
 import { describe, expect, it, Mock, vi } from 'vitest'
 import { render, screen, waitFor } from '@testing-library/react'
-import CardList from './cardList'
+import { CardList } from './cardList'
 import { Card } from '../../types/card'
 
 describe('CardList', () => {

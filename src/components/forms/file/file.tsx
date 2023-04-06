@@ -1,31 +1,28 @@
-import React, { Component, Ref } from 'react'
+import React from 'react'
 import './file.scss'
+import { UseFormRegister } from 'react-hook-form'
+import { FormFields } from '../../../types/formFields'
 
 interface TextInputProps {
-  inputRef: Ref<HTMLInputElement>
   error?: string
-  onChange: () => void
+  register: ReturnType<UseFormRegister<FormFields>>
 }
-export default class File extends Component<TextInputProps> {
-  render() {
-    const { inputRef, error, onChange } = this.props
-    const errorClass = error ? 'error-border' : ''
-    return (
-      <div className="forms-file">
-        {!error && (
-          <span className="forms-file__title">Upload a profile image</span>
-        )}
-        {!!error && <span className="forms-file__error-message">{error}</span>}
-        <input
-          data-testid="input-file"
-          className={`forms-file__upload ${errorClass}`}
-          type="file"
-          name="file"
-          id="file-upload"
-          ref={inputRef}
-          onChange={onChange}
-        />
-      </div>
-    )
-  }
+
+export function File({ error, register }: TextInputProps) {
+  const errorClass = error ? 'error-border' : ''
+  return (
+    <div className="forms-file">
+      {!error && (
+        <span className="forms-file__title">Upload a profile image</span>
+      )}
+      {!!error && <span className="forms-file__error-message">{error}</span>}
+      <input
+        {...register}
+        data-testid="input-file"
+        className={`forms-file__upload ${errorClass}`}
+        type="file"
+        id="file-upload"
+      />
+    </div>
+  )
 }

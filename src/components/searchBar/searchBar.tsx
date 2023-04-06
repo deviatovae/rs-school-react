@@ -1,64 +1,54 @@
-import React, { ChangeEvent, Component } from 'react'
+import React, { ChangeEvent, useEffect, useRef, useState } from 'react'
 import './searchBar.scss'
 import { Icon } from '@iconify/react'
 import { Storage } from '../../utils/storage'
 
-type SearchBarProps = Record<string, never>
-interface SearchBarState {
-  value: string
-}
+export function SearchBar() {
+  const valueRef = useRef(Storage.get('search'))
+  const [search, setSearch] = useState(valueRef.current)
 
-export default class SearchBar extends Component<
-  SearchBarProps,
-  SearchBarState
-> {
-  constructor(props: SearchBarProps) {
-    super(props)
-    this.state = {
-      value: Storage.get('search'),
+  useEffect(() => {
+    valueRef.current = search
+  }, [search])
+
+  useEffect(() => {
+    return () => {
+      Storage.save('search', valueRef.current)
     }
+  }, [])
+
+  const onChange = (e: ChangeEvent<HTMLInputElement>): void => {
+    setSearch(e.target.value)
   }
 
-  componentWillUnmount() {
-    const { value } = this.state
-    Storage.save('search', value)
+  const clearSearch = (): void => {
+    setSearch('')
   }
 
-  onChange = (e: ChangeEvent<HTMLInputElement>): void => {
-    this.setState({ value: e.target.value })
-  }
-
-  clearSearch = (): void => {
-    this.setState({ value: '' })
-  }
-
-  render() {
-    const { value } = this.state
-    return (
-      <div className="search-bar">
-        <input
-          className="search-bar__input"
-          value={value}
-          type="text"
-          placeholder="Search..."
-          onChange={this.onChange}
-        />
-        <Icon
-          className="search-bar__search"
-          icon="ph:magnifying-glass"
-          color="#222"
-          width="20"
-          height="20"
-        />
-        <Icon
-          className="search-bar__cross"
-          icon="ant-design:close-circle-outlined"
-          color="#222"
-          width="20"
-          height="20"
-          onClick={this.clearSearch}
-        />
-      </div>
-    )
-  }
+  return (
+    <div className="search-bar">
+      <input
+        className="search-bar__input"
+        value={search}
+        type="text"
+        placeholder="Search..."
+        onChange={onChange}
+      />
+      <Icon
+        className="search-bar__search"
+        icon="ph:magnifying-glass"
+        color="#222"
+        width="20"
+        height="20"
+      />
+      <Icon
+        className="search-bar__cross"
+        icon="ant-design:close-circle-outlined"
+        color="#222"
+        width="20"
+        height="20"
+        onClick={clearSearch}
+      />
+    </div>
+  )
 }

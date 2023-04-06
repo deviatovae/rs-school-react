@@ -1,41 +1,32 @@
-import React, { Component, Ref } from 'react'
+import React from 'react'
 import './switcher.scss'
+import { UseFormRegister } from 'react-hook-form'
+import { FormFields } from '../../../types/formFields'
 
 interface SwitcherProps {
-  inputRef: Ref<HTMLInputElement>
-  inputRef2: Ref<HTMLInputElement>
   error?: string
-  onChange: () => void
+  register: ReturnType<UseFormRegister<FormFields>>
 }
-export default class Switcher extends Component<SwitcherProps> {
-  render() {
-    const { inputRef, inputRef2, error, onChange } = this.props
-    return (
-      <div className="switch-button">
-        <div className="switch-button__content">
-          <span>I would like to receive news and marketing offers.</span>
-          <div className="switch-button__box">
-            <input
-              data-testid="input-news"
-              type="radio"
-              id="radio-one"
-              name="news"
-              ref={inputRef}
-              onChange={onChange}
-            />
-            <label htmlFor="radio-one">Yes</label>
-            <input
-              type="radio"
-              id="radio-two"
-              name="news"
-              ref={inputRef2}
-              onChange={onChange}
-            />
-            <label htmlFor="radio-two">No</label>
-          </div>
+
+export function Switcher({ error, register }: SwitcherProps) {
+  return (
+    <div className="switch-button">
+      <div className="switch-button__content">
+        <span>I would like to receive news and marketing offers.</span>
+        <div className="switch-button__box">
+          <input
+            {...register}
+            data-testid="input-news"
+            type="radio"
+            id="radio-one"
+            defaultValue="yes"
+          />
+          <label htmlFor="radio-one">Yes</label>
+          <input {...register} id="radio-two" type="radio" defaultValue="" />
+          <label htmlFor="radio-two">No</label>
         </div>
-        {!!error && <span className="switch-button__error">{error}</span>}
       </div>
-    )
-  }
+      {!!error && <span className="switch-button__error">{error}</span>}
+    </div>
+  )
 }

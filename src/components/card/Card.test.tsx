@@ -2,7 +2,7 @@ import React from 'react'
 import { describe, expect, it } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import { Card as CardType } from '../../types/card'
-import Card from './card'
+import { Card } from './card'
 
 describe('Card', () => {
   it('Should render a card', () => {

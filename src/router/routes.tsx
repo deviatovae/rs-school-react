@@ -1,10 +1,10 @@
 import React from 'react'
-import Home from '../pages/Home'
-import AboutUs from '../pages/AboutUs'
+import { Home } from '../pages/Home'
+import { AboutUs } from '../pages/AboutUs'
 import { Route } from '../enums/route'
 import App from '../App'
 import ErrorPage from '../pages/ErrorPage'
-import Forms from '../pages/Forms'
+import { FormPage } from '../pages/FormPage'
 
 export const routes = [
   {
@@ -33,7 +33,7 @@ export const routes = [
     children: [
       {
         path: Route.JOIN,
-        element: <Forms />,
+        element: <FormPage />,
       },
     ],
   },

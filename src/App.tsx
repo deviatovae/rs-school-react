@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Outlet } from 'react-router-dom'
 import './assets/App.scss'
 import Header from './components/header/header'
@@ -7,17 +7,15 @@ interface AppProps {
   pageTitle: string
 }
 
-class App extends Component<AppProps> {
-  render() {
-    const { pageTitle } = this.props
+function App(props: AppProps) {
+  const { pageTitle } = props
 
-    return (
-      <div>
-        <Header pageTitle={pageTitle} />
-        <Outlet />
-      </div>
-    )
-  }
+  return (
+    <div>
+      <Header pageTitle={pageTitle} />
+      <Outlet />
+    </div>
+  )
 }
 
 export default App
