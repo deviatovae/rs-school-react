@@ -16,14 +16,14 @@ interface SearchBarProps {
 export function SearchBar({ onSearch }: SearchBarProps) {
   const valueRef = useRef(Storage.get('search'))
   const [search, setSearch] = useState(valueRef.current)
-  const [isSearching, setIsSearching] = useState(false)
+  const [isSearching, setIsSearching] = useState(!!valueRef.current.length)
 
   useEffect(() => {
     valueRef.current = search
   }, [search])
 
   useEffect(() => {
-    onSearch(Storage.get('search'))
+    onSearch(valueRef.current)
   }, [onSearch])
 
   const onChange = (e: ChangeEvent<HTMLInputElement>): void => {
@@ -43,9 +43,9 @@ export function SearchBar({ onSearch }: SearchBarProps) {
   }
 
   const clearSearch = (): void => {
+    onSearch('')
     setSearch('')
     setIsSearching(false)
-    onSearch('')
   }
 
   return (
