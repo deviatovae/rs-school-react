@@ -23,10 +23,8 @@ export function SearchBar({ onSearch }: SearchBarProps) {
   }, [search])
 
   useEffect(() => {
-    return () => {
-      Storage.save('search', valueRef.current)
-    }
-  }, [])
+    onSearch(Storage.get('search'))
+  }, [onSearch])
 
   const onChange = (e: ChangeEvent<HTMLInputElement>): void => {
     setSearch(e.target.value)
@@ -35,6 +33,7 @@ export function SearchBar({ onSearch }: SearchBarProps) {
   const doSearch = () => {
     onSearch(search)
     setIsSearching(!!search.length)
+    Storage.save('search', valueRef.current)
   }
 
   const onKeyDown = (e: KeyboardEvent<HTMLInputElement>): void => {
