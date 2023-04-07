@@ -13,16 +13,30 @@ export function CardDetails({
     <div className="card-details__container">
       <div className="card-details__content">
         <div className="card-details__image-container image-container">
-          <img src={image} alt="" />
+          <img src={image} alt="" data-testid="cardDetailsImage" />
         </div>
         <div className="card-details__info card-info">
-          <h1 className="card-info__title">{name}</h1>
-          <span className="card-info__rating">{'⋆'.repeat(rating)}</span>
-          <span className="card-info__price">{price}$</span>
-          <p className="card-info__description">{description}</p>
+          <h1 className="card-info__title" data-testid="cardDetailsName">
+            {name}
+          </h1>
+          <span className="card-info__rating" data-testid="cardDetailsRating">
+            {'⋆'.repeat(rating)}
+          </span>
+          <span className="card-info__price" data-testid="cardDetailsPrice">
+            {price}$
+          </span>
+          <p
+            className="card-info__description"
+            data-testid="cardDetailsDescription"
+          >
+            {description}
+          </p>
           <div className="card-info__time">
             <Icon icon="akar-icons:fire" color="#222" width="16" height="16" />
-            <span className="card-info__time-count">
+            <span
+              className="card-info__time-count"
+              data-testid="cardDetailsTime"
+            >
               Hour Burn Time: {time}h
             </span>
           </div>

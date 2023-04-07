@@ -13,7 +13,7 @@ export function Modal({ children, closeModal }: ModalProps) {
   useModalHandler({ elementRef: modalRef, onClose: closeModal })
 
   return (
-    <div className="modal" ref={modalRef}>
+    <div className="modal" ref={modalRef} data-testid="modal">
       <div className="modal__content">
         <Icon
           onClick={closeModal}
