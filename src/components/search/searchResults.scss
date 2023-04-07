@@ -1,0 +1,42 @@
+@import "src/assets/colors";
+.search-results {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 30px;
+  margin-bottom: 15px;
+
+  &__title {
+    font-size: 1.1rem;
+    margin: 0 8px 0 0;
+    text-align: center;
+    font-weight: 500;
+  }
+
+  &__content {
+    width: 100%;
+    display: flex;
+    align-items: end;
+    padding-bottom: 3px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+    border-bottom: solid 1.5px rgba($lavenderHover, 0.2);
+
+    & > span {
+      display: flex;
+      max-width: 1200px;
+      overflow: hidden;
+    }
+  }
+
+  &__not-found {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    padding: 5px 20px;
+    border: solid 1.5px $lavenderAccent;
+    background-color: $mainWhite;
+    color: $lavenderAccent;
+    gap: 10px;
+  }
+}

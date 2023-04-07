@@ -3,31 +3,39 @@ import './card.scss'
 import type { Card as CardType } from '../../types/card'
 import { Card } from './card'
 import './cardList.scss'
-import { API_URL } from '../../types/const'
 import { Loader } from '../loader/loader'
+import { fetchCard, fetchCards } from '../../api/cardsApi'
+import { SearchResults } from '../search/searchResults'
 
 interface CardListProps {
   selectCard: (card: CardType) => void
+  searchQuery: string
 }
 
-export function CardList({ selectCard }: CardListProps) {
+export function CardList({ selectCard, searchQuery }: CardListProps) {
   const [cards, setCards] = useState<CardType[]>([])
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    fetch(`${API_URL}/cards`)
-      .then((res) => res.json() as Promise<CardType[]>)
-      .then((cardList) => {
-        setCards(cardList)
-        setIsLoading(false)
-      })
-  }, [])
+    setIsLoading(true)
+    fetchCards(searchQuery).then((cardList) => {
+      setCards(cardList)
+      setIsLoading(false)
+    })
+  }, [searchQuery])
 
   return (
     <Loader isLoading={isLoading}>
+      {searchQuery && (
+        <SearchResults searchValue={searchQuery} hasCards={!!cards.length} />
+      )}
       <div className="card-list">
         {cards.map((card) => (
-          <Card key={card.id} card={card} onClick={() => selectCard(card)} />
+          <Card
+            key={card.id}
+            card={card}
+            onClick={async () => selectCard(await fetchCard(card.id))}
+          />
         ))}
       </div>
     </Loader>

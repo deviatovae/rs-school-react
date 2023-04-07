@@ -5,7 +5,7 @@ import { SearchBar } from './searchBar'
 
 describe('SearchBar', () => {
   it('Should render a searchbar', async () => {
-    const { container } = render(<SearchBar />)
+    const { container } = render(<SearchBar onSearch={() => null} />)
 
     const input = container.querySelector(
       'input.search-bar__input'
