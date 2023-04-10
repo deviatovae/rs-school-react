@@ -17,11 +17,21 @@ export function CardList({ selectCard, searchQuery }: CardListProps) {
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    setIsLoading(true)
-    fetchCards(searchQuery).then((cardList) => {
-      setCards(cardList)
-      setIsLoading(false)
-    })
+    let isActive = true
+    const timeoutId = setTimeout(() => {
+      setIsLoading(true)
+      fetchCards(searchQuery).then((cardList) => {
+        if (isActive) {
+          setCards(cardList)
+          setIsLoading(false)
+        }
+      })
+    }, 0)
+
+    return () => {
+      clearTimeout(timeoutId)
+      isActive = false
+    }
   }, [searchQuery])
 
   return (
