@@ -1,22 +1,22 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import './card.scss'
-import type { Card as CardType } from '../../types/card'
 import { Card } from './card'
 import './cardList.scss'
 import { Loader } from '../loader/loader'
-import { fetchCard, useGetCardsQuery } from '../../api/cardsApi'
+import { useGetCardsQuery } from '../../api/cardsApi'
 import { SearchResults } from '../search/searchResults'
+import { useAppSelector } from '../../hooks/hooks'
 
 interface CardListProps {
   selectCard: (cardId: string) => void
-  searchQuery: string
 }
 
-export function CardList({ selectCard, searchQuery }: CardListProps) {
-  const { isLoading, data: cards } = useGetCardsQuery(searchQuery)
+export function CardList({ selectCard }: CardListProps) {
+  const searchQuery = useAppSelector((state) => state.search)
+  const { isFetching, data: cards } = useGetCardsQuery(searchQuery)
 
   return (
-    <Loader isLoading={isLoading}>
+    <Loader isLoading={isFetching}>
       {searchQuery && (
         <SearchResults searchValue={searchQuery} hasCards={!!cards?.length} />
       )}

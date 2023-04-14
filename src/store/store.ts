@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { bougieApi } from '../api/cardsApi'
+import { searchSlice } from './searchSlice'
 
 export const store = configureStore({
   reducer: {
     [bougieApi.reducerPath]: bougieApi.reducer,
+    search: searchSlice.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(bougieApi.middleware),
