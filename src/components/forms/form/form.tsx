@@ -9,9 +9,11 @@ import { File } from '../file/file'
 import { FormFields } from '../../../types/formFields'
 import { ErrorMsg } from '../../../enums/errors'
 import './form.scss'
+import { useAppDispatch } from '../../../hooks/hooks'
+import { addCard } from '../../../store/formSlice'
 
 interface FormProps {
-  onSubmitted: (card: FormFields) => void
+  onSubmitted: () => void
 }
 
 export function Form({ onSubmitted }: FormProps) {
@@ -22,8 +24,11 @@ export function Form({ onSubmitted }: FormProps) {
     formState: { errors },
   } = useForm<FormFields>()
 
+  const dispatch = useAppDispatch()
+
   const onSubmit: SubmitHandler<FormFields> = (cardData) => {
-    onSubmitted(cardData)
+    dispatch(addCard(cardData))
+    onSubmitted()
     reset()
   }
 
