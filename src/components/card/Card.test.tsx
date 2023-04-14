@@ -15,24 +15,13 @@ describe('Card', () => {
       image: '/src/1.jpg',
     }
 
-    const { container } = render(<Card card={card} />)
+    render(<Card card={card} />)
 
-    expect(screen.getByRole('heading')).toHaveTextContent(card.name)
-
-    expect(container.querySelector('.card__img')).toHaveAttribute(
-      'src',
-      card.image
-    )
-
-    expect(container.querySelector('.card-middle__price')).toHaveTextContent(
-      `${card.price}$`
-    )
-
-    expect(
-      container.querySelector('.card-middle__time-count')
-    ).toHaveTextContent(`${card.time}h`)
-
-    expect(container.querySelector('.card__rating')).toHaveTextContent(
+    expect(screen.getByTestId('cardName')).toHaveTextContent(card.name)
+    expect(screen.getByTestId('cardImage')).toHaveAttribute('src', card.image)
+    expect(screen.getByTestId('cardPrice')).toHaveTextContent(`${card.price}$`)
+    expect(screen.getByTestId('cardTime')).toHaveTextContent(`${card.time}h`)
+    expect(screen.getByTestId('cardRating')).toHaveTextContent(
       '⋆'.repeat(card.rating)
     )
   })

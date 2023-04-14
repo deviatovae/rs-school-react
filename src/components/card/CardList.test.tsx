@@ -25,13 +25,14 @@ describe('CardList', () => {
       },
     ]
 
-    global.fetch = vi.fn(() =>
-      Promise.resolve({
+    global.fetch = vi.fn((url: string) => {
+      expect(url).eq('http://localhost:8080/cards?q=test')
+      return Promise.resolve({
         json: () => Promise.resolve(cards),
       })
-    ) as Mock
+    }) as Mock
 
-    render(<CardList />)
+    render(<CardList searchQuery="test" selectCard={() => null} />)
 
     await waitFor(() => screen.getAllByTestId('card'))
 

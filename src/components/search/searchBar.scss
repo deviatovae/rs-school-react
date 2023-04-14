@@ -35,11 +35,3 @@
   }
 }
 
-.search-bar__input:not(:placeholder-shown) ~ .search-bar__search,
-.search-bar__input:placeholder-shown ~ .search-bar__cross {
-  display: none;
-}
-.search-bar__input:placeholder-shown ~ .search-bar__search,
-.search-bar__input:not(:placeholder-shown) ~ .search-bar__cross {
-  display: block;
-}
