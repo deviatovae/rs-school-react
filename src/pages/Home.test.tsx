@@ -1,49 +1,44 @@
 import React from 'react'
-import { describe, expect, it, Mock, vi } from 'vitest'
+import { Provider } from 'react-redux'
+import { describe, expect, it } from 'vitest'
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { Home } from './Home'
-import { Card } from '../types/card'
+import { store } from '../store/store'
+import { cards } from '../mocks/cards'
 
 describe('Home', () => {
   it('Should render card modal with card details', async () => {
-    const card: Card = {
-      id: 3,
-      name: 'candle3',
-      description: 'Balsam and oak moss mingle with aromatic...',
-      price: 9.99,
-      time: 40,
-      rating: 5,
-      image: '/src/3.jpg',
-    }
+    render(
+      <Provider store={store}>
+        <Home />
+      </Provider>
+    )
 
-    global.fetch = vi.fn((url: string) => {
-      const response = url === 'http://localhost:8080/cards' ? [card] : card
-      return Promise.resolve({
-        json: () => Promise.resolve(response),
-      })
-    }) as Mock
+    const testCard = cards[0]
 
-    render(<Home />)
-
-    await waitFor(() => fireEvent.click(screen.getByTestId('card')))
+    await waitFor(() => fireEvent.click(screen.getByTestId('card-3')))
     await waitFor(() => screen.getByTestId('modal'))
 
-    expect(screen.getByTestId('cardDetailsName')).toHaveTextContent(card.name)
+    await waitFor(() => screen.getByTestId('cardDetailsName'))
+
+    expect(screen.getByTestId('cardDetailsName')).toHaveTextContent(
+      testCard.name
+    )
     expect(screen.getByTestId('cardDetailsDescription')).toHaveTextContent(
-      card.description || ''
+      testCard.description || ''
     )
     expect(screen.getByTestId('cardDetailsImage')).toHaveAttribute(
       'src',
-      card.image
+      testCard.image
     )
     expect(screen.getByTestId('cardDetailsPrice')).toHaveTextContent(
-      `${card.price}$`
+      `${testCard.price}$`
     )
     expect(screen.getByTestId('cardDetailsTime')).toHaveTextContent(
-      `${card.time}h`
+      `${testCard.time}h`
     )
     expect(screen.getByTestId('cardDetailsRating')).toHaveTextContent(
-      '⋆'.repeat(card.rating)
+      '⋆'.repeat(testCard.rating)
     )
   })
 })

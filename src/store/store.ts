@@ -10,7 +10,9 @@ export const store = configureStore({
     formRequest: formSlice.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(bougieApi.middleware),
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }).concat(bougieApi.middleware),
 })
 export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch

@@ -9,13 +9,13 @@ interface CardProps {
 }
 
 export function Card({
-  card: { name, price, time, rating, image },
+  card: { id, name, price, time, rating, image },
   onClick,
 }: CardProps) {
   return (
     <div
       className="card"
-      data-testid="card"
+      data-testid={`card-${id}`}
       onClick={onClick}
       aria-hidden="true"
     >
