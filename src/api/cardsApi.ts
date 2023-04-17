@@ -18,10 +18,4 @@ export const bougieApi = createApi({
   }),
 })
 
-export function fetchCard(id: number) {
-  return fetch(`${API_URL}/cards/${id}`).then(
-    (res) => res.json() as Promise<CardType>
-  )
-}
-
 export const { useGetCardQuery, useGetCardsQuery } = bougieApi
