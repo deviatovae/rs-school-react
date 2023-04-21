@@ -1,52 +1,34 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import './card.scss'
-import type { Card as CardType } from '../../types/card'
 import { Card } from './card'
 import './cardList.scss'
 import { Loader } from '../loader/loader'
-import { fetchCard, fetchCards } from '../../api/cardsApi'
+import { useGetCardsQuery } from '../../api/cardsApi'
 import { SearchResults } from '../search/searchResults'
+import { useAppSelector } from '../../hooks/hooks'
 
 interface CardListProps {
-  selectCard: (card: CardType) => void
-  searchQuery: string
+  selectCard: (cardId: string) => void
 }
 
-export function CardList({ selectCard, searchQuery }: CardListProps) {
-  const [cards, setCards] = useState<CardType[]>([])
-  const [isLoading, setIsLoading] = useState(true)
-
-  useEffect(() => {
-    let isActive = true
-    const timeoutId = setTimeout(() => {
-      setIsLoading(true)
-      fetchCards(searchQuery).then((cardList) => {
-        if (isActive) {
-          setCards(cardList)
-          setIsLoading(false)
-        }
-      })
-    }, 0)
-
-    return () => {
-      clearTimeout(timeoutId)
-      isActive = false
-    }
-  }, [searchQuery])
+export function CardList({ selectCard }: CardListProps) {
+  const searchQuery = useAppSelector((state) => state.search)
+  const { isFetching, data: cards } = useGetCardsQuery(searchQuery)
 
   return (
-    <Loader isLoading={isLoading}>
+    <Loader isLoading={isFetching}>
       {searchQuery && (
-        <SearchResults searchValue={searchQuery} hasCards={!!cards.length} />
+        <SearchResults searchValue={searchQuery} hasCards={!!cards?.length} />
       )}
       <div className="card-list">
-        {cards.map((card) => (
-          <Card
-            key={card.id}
-            card={card}
-            onClick={async () => selectCard(await fetchCard(card.id))}
-          />
-        ))}
+        {cards &&
+          cards.map((card) => (
+            <Card
+              key={card.id}
+              card={card}
+              onClick={async () => selectCard(card.id.toString())}
+            />
+          ))}
       </div>
     </Loader>
   )

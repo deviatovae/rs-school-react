@@ -1,41 +1,21 @@
 import React from 'react'
-import { describe, expect, it, Mock, vi } from 'vitest'
+import { describe, it } from 'vitest'
 import { render, screen, waitFor } from '@testing-library/react'
+import { Provider } from 'react-redux'
 import { CardList } from './cardList'
-import { Card } from '../../types/card'
+import { store } from '../../store/store'
+import { cards } from '../../mocks/cards'
 
 describe('CardList', () => {
   it('Should render a list of cards', async () => {
-    const cards: Card[] = [
-      {
-        id: 1,
-        name: 'candle1',
-        price: 9.99,
-        time: 40,
-        rating: 5,
-        image: '/src/1.jpg',
-      },
-      {
-        id: 2,
-        name: 'candle2',
-        price: 9.99,
-        time: 40,
-        rating: 5,
-        image: '/src/2.jpg',
-      },
-    ]
+    render(
+      <Provider store={store}>
+        <CardList selectCard={() => null} />
+      </Provider>
+    )
 
-    global.fetch = vi.fn((url: string) => {
-      expect(url).eq('http://localhost:8080/cards?q=test')
-      return Promise.resolve({
-        json: () => Promise.resolve(cards),
-      })
-    }) as Mock
-
-    render(<CardList searchQuery="test" selectCard={() => null} />)
-
-    await waitFor(() => screen.getAllByTestId('card'))
-
-    expect(screen.getAllByTestId('card')).length(cards.length)
+    await waitFor(() => {
+      cards.forEach(({ id }) => screen.getByTestId(`card-${id}`))
+    })
   })
 })

@@ -1,58 +1,41 @@
-import React, {
-  ChangeEvent,
-  KeyboardEvent,
-  useEffect,
-  useRef,
-  useState,
-} from 'react'
+import React, { ChangeEvent, KeyboardEvent, useState } from 'react'
 import './searchBar.scss'
 import { Icon } from '@iconify/react'
-import { Storage } from '../../utils/storage'
+import { useAppDispatch, useAppSelector } from '../../hooks/hooks'
+import { setSearch } from '../../store/searchSlice'
 
-interface SearchBarProps {
-  onSearch: (value: string) => void
-}
+export function SearchBar() {
+  const search = useAppSelector((state) => state.search)
+  const [inputValue, setInputValue] = useState(search)
+  const dispatch = useAppDispatch()
 
-export function SearchBar({ onSearch }: SearchBarProps) {
-  const valueRef = useRef(Storage.get('search'))
-  const [search, setSearch] = useState(valueRef.current)
-  const [isSearching, setIsSearching] = useState(!!valueRef.current.length)
-
-  useEffect(() => {
-    valueRef.current = search
-  }, [search])
-
-  useEffect(() => {
-    onSearch(valueRef.current)
-  }, [onSearch])
+  const [isSearching, setIsSearching] = useState(!!search.length)
 
   const onChange = (e: ChangeEvent<HTMLInputElement>): void => {
-    setSearch(e.target.value)
+    setInputValue(e.target.value)
   }
 
-  const doSearch = () => {
-    onSearch(search)
-    setIsSearching(!!search.length)
-    Storage.save('search', valueRef.current)
+  const submit = () => {
+    setIsSearching(!!inputValue.length)
+    dispatch(setSearch(inputValue))
   }
 
   const onKeyDown = (e: KeyboardEvent<HTMLInputElement>): void => {
     if (e.key === 'Enter') {
-      doSearch()
+      submit()
     }
   }
 
   const clearSearch = (): void => {
-    onSearch('')
-    setSearch('')
-    setIsSearching(false)
+    setInputValue('')
+    submit()
   }
 
   return (
     <div className="search-bar">
       <input
         className="search-bar__input"
-        value={search}
+        value={inputValue}
         type="text"
         placeholder="Search..."
         onChange={onChange}
@@ -65,7 +48,7 @@ export function SearchBar({ onSearch }: SearchBarProps) {
           color="#222"
           width="20"
           height="20"
-          onClick={doSearch}
+          onClick={submit}
         />
       )}
       {isSearching && (

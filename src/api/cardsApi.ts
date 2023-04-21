@@ -1,13 +1,21 @@
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { API_URL } from '../types/const'
 import { Card as CardType } from '../types/card'
 
-export function fetchCards(param?: string) {
-  const baseUrl = `${API_URL}/cards`
-  const url = param ? `${baseUrl}?q=${param}` : baseUrl
-  return fetch(url).then((res) => res.json() as Promise<CardType[]>)
-}
-export function fetchCard(id: number) {
-  return fetch(`${API_URL}/cards/${id}`).then(
-    (res) => res.json() as Promise<CardType>
-  )
-}
+export const bougieApi = createApi({
+  reducerPath: 'bougieApi',
+  baseQuery: fetchBaseQuery({ baseUrl: `${API_URL}/` }),
+  endpoints: (builder) => ({
+    getCards: builder.query<CardType[], string>({
+      query: (query) => ({
+        url: 'cards',
+        params: query ? { q: query } : {},
+      }),
+    }),
+    getCard: builder.query<CardType, string>({
+      query: (id) => `cards/${id}`,
+    }),
+  }),
+})
+
+export const { useGetCardQuery, useGetCardsQuery } = bougieApi
