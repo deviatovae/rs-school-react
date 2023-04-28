@@ -42,6 +42,7 @@ module.exports = {
         }],
         "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
         "react/jsx-props-no-spreading": "off",
-        "react/display-name": "off"
+        "react/display-name": "off",
+        "no-underscore-dangle": "off"
     },
 }

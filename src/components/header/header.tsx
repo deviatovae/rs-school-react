@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 import { Route } from '../../enums/route'
 
 interface HeaderProps {
-  pageTitle: string
+  pageTitle?: string
 }
 
 const getLinkClass = (isActive: boolean) =>
