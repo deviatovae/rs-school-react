@@ -49,7 +49,6 @@ async function createServer() {
       const htmlParts = template.split(PLACEHOLDER_SSR)
 
       const { pipe, store } = await render(req, url, {
-        bootstrapScripts: [PATH_ENTRY_CLIENT],
         onShellReady() {
           res.statusCode = getStatusCode()
           res.setHeader('content-type', 'text/html')
