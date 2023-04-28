@@ -1,7 +1,6 @@
 import React from 'react'
 import { describe, expect, it } from 'vitest'
-import { fireEvent, screen } from '@testing-library/react'
-import { SearchBar } from './searchBar'
+import { screen } from '@testing-library/react'
 import { renderWithProviders } from '../../utils/testUtils'
 import { SearchResults } from './searchResults'
 

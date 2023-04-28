@@ -2,7 +2,6 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { RouterProvider } from 'react-router-dom'
 import { Provider } from 'react-redux'
-import { createStaticHandler } from 'react-router-dom/server'
 import router from './router/router'
 import { setupStore } from './store/store'
 

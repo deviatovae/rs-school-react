@@ -14,9 +14,7 @@ type EntryServer = {
 
 const PLACEHOLDER_SSR = '<!--ssr-->'
 const PLACEHOLDER_PRELOADED_STATE = '<!--preloadedState-->'
-
 const PATH_ENTRY_SERVER = '/src/entry-server.tsx'
-const PATH_ENTRY_CLIENT = './entry-client.tsx'
 
 async function createServer() {
   const app = express()
