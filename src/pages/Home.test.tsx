@@ -1,18 +1,13 @@
 import React from 'react'
-import { Provider } from 'react-redux'
 import { describe, expect, it } from 'vitest'
-import { fireEvent, render, screen, waitFor } from '@testing-library/react'
+import { fireEvent, screen, waitFor } from '@testing-library/react'
 import { Home } from './Home'
-import { store } from '../store/store'
 import { cards } from '../mocks/cards'
+import { renderWithProviders } from '../utils/testUtils'
 
 describe('Home', () => {
   it('Should render card modal with card details', async () => {
-    render(
-      <Provider store={store}>
-        <Home />
-      </Provider>
-    )
+    renderWithProviders(<Home />)
 
     const testCard = cards[0]
 

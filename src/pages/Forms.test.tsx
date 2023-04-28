@@ -1,19 +1,14 @@
 import React from 'react'
 import user from '@testing-library/user-event'
 import { describe, it, vi } from 'vitest'
-import { fireEvent, render, screen, waitFor } from '@testing-library/react'
-import { Provider } from 'react-redux'
+import { fireEvent, screen, waitFor } from '@testing-library/react'
 import { FormPage } from './FormPage'
 import { ErrorMsg } from '../enums/errors'
-import { store } from '../store/store'
+import { renderWithProviders } from '../utils/testUtils'
 
 describe('Forms', () => {
   it('Should contain required inputs and their labels', () => {
-    render(
-      <Provider store={store}>
-        <FormPage />
-      </Provider>
-    )
+    renderWithProviders(<FormPage />)
 
     expect(screen.getByText('Country')).toBeInTheDocument()
     expect(screen.getByTestId('input-country')).toBeInTheDocument()
@@ -30,11 +25,7 @@ describe('Forms', () => {
   })
 
   it('Should display validation error on submitting the form', async () => {
-    render(
-      <Provider store={store}>
-        <FormPage />
-      </Provider>
-    )
+    renderWithProviders(<FormPage />)
 
     fireEvent.click(screen.getByTestId('btn-submit'))
 
@@ -48,11 +39,7 @@ describe('Forms', () => {
   })
 
   it('Should not display cards if there are validation errors', () => {
-    render(
-      <Provider store={store}>
-        <FormPage />
-      </Provider>
-    )
+    renderWithProviders(<FormPage />)
 
     fireEvent.click(screen.getByTestId('btn-submit'))
 
@@ -60,11 +47,7 @@ describe('Forms', () => {
   })
 
   it('Should render a form card after submitting a valid form', async () => {
-    render(
-      <Provider store={store}>
-        <FormPage />
-      </Provider>
-    )
+    renderWithProviders(<FormPage />)
 
     const imgSrc = 'image-src'
     const country = 'Canada'

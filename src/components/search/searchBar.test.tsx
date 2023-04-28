@@ -1,23 +1,22 @@
 import React from 'react'
 import { describe, expect, it } from 'vitest'
-import { fireEvent, render } from '@testing-library/react'
-import { Provider } from 'react-redux'
+import { fireEvent, screen } from '@testing-library/react'
 import { SearchBar } from './searchBar'
-import { store } from '../../store/store'
+import { renderWithProviders } from '../../utils/testUtils'
 
 describe('SearchBar', () => {
   it('Should render a searchbar', async () => {
-    const { container } = render(
-      <Provider store={store}>
-        <SearchBar />
-      </Provider>
-    )
+    const query = 'Need more candles'
 
-    const input = container.querySelector(
-      'input.search-bar__input'
-    ) as HTMLInputElement
+    renderWithProviders(<SearchBar />, {
+      preloadedState: {
+        search: query,
+      },
+    })
+
+    const input = screen.getByTestId('searchInput')
     expect(input).not.toBeNull()
-    expect(input).toHaveValue('')
+    expect(input).toHaveValue(query)
 
     fireEvent.change(input, { target: { value: 'test' } })
     expect(input).toHaveValue('test')
