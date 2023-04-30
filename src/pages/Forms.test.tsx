@@ -1,6 +1,6 @@
 import React from 'react'
 import user from '@testing-library/user-event'
-import { describe, it, vi } from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
 import { fireEvent, screen, waitFor } from '@testing-library/react'
 import { FormPage } from './FormPage'
 import { ErrorMsg } from '../enums/errors'
