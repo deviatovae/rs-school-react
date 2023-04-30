@@ -8,8 +8,8 @@ interface TextInputProps {
   register: ReturnType<UseFormRegister<FormFields>>
 }
 
-export function Date({ error, register }: TextInputProps) {
-  const today = new window.Date()
+export function DateInput({ error, register }: TextInputProps) {
+  const today = new Date()
   const errorClass = error ? 'error-border' : ''
   return (
     <div className={`forms-date ${errorClass}`}>
