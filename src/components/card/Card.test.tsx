@@ -1,8 +1,9 @@
 import React from 'react'
 import { describe, expect, it } from 'vitest'
-import { render, screen } from '@testing-library/react'
+import { screen } from '@testing-library/react'
 import { Card as CardType } from '../../types/card'
 import { Card } from './card'
+import { renderWithProviders } from '../../utils/testUtils'
 
 describe('Card', () => {
   it('Should render a card', () => {
@@ -15,7 +16,7 @@ describe('Card', () => {
       image: '/src/1.jpg',
     }
 
-    render(<Card card={card} />)
+    renderWithProviders(<Card card={card} />)
 
     expect(screen.getByTestId('cardName')).toHaveTextContent(card.name)
     expect(screen.getByTestId('cardImage')).toHaveAttribute('src', card.image)

@@ -4,7 +4,7 @@ import './assets/App.scss'
 import Header from './components/header/header'
 
 interface AppProps {
-  pageTitle: string
+  pageTitle?: string
 }
 
 function App(props: AppProps) {

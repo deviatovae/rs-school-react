@@ -38,6 +38,7 @@ export function SearchBar() {
         value={inputValue}
         type="text"
         placeholder="Search..."
+        data-testid="searchInput"
         onChange={onChange}
         onKeyDown={onKeyDown}
       />
