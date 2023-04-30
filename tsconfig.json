@@ -22,6 +22,8 @@
   },
   "include": [
     "src",
+    "cypress",
+    "cypress.config.ts",
     ".eslintrc.cjs",
     "vite.config.ts"
   ],
